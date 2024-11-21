@@ -1,6 +1,10 @@
 
 public class DragonTreasure {
     public static void main(String[] args) {
+
+
+    }//main
+    private void printTreasure() {
         System.out.println(
                 "                  _.--.\n" +
                         "              _.-'_:-'||\n" +
@@ -21,7 +25,9 @@ public class DragonTreasure {
                         "      |'-._   || |'|_.-'_.-'\n" +
                         "      '-._'-.|| |' `_.-'\n" +
                         "           '-.||_/.-'\n");
+    }//printTreasure
 
+    public void printDragon() {
         System.out.println(
                 "                                                  .~))>>\n" +
                         "                                                 .~)>>\n" +
@@ -57,4 +63,4 @@ public class DragonTreasure {
                         "                                              :bb ,' \n" +
                         "                                              ~~~~\n");
     }
-}
+}//class

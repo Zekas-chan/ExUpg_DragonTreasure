@@ -1,5 +1,5 @@
 public class Room {
-    String roomDescription;
+    private String roomDescription;
     public void doNarrative(){}
 }
 

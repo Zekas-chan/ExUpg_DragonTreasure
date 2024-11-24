@@ -1,5 +1,15 @@
 public class Room {
     private String roomDescription;
-    public void doNarrative(){}
+    //array som listar dörrarna?
+
+    public Room()
+    {
+        //TODO implement constructor
+    }
+
+    public void doNarrative()
+    {
+        //TODO implementation
+    }
 }
 

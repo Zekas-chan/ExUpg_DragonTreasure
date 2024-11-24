@@ -1,9 +1,26 @@
 
 public class DragonTreasure {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        //FIXME should start the game when run
 
     }//main
+
+    public DragonTreasure()
+    {
+        //TODO implement constructor
+    }
+
+    public void setupGame()
+    {
+        //TODO implementation
+    }
+
+    public void endGame()
+    {
+        //TODO implementation
+    }
+
     private void printTreasure() {
         System.out.println(
                 "                  _.--.\n" +
@@ -25,7 +42,7 @@ public class DragonTreasure {
                         "      |'-._   || |'|_.-'_.-'\n" +
                         "      '-._'-.|| |' `_.-'\n" +
                         "           '-.||_/.-'\n");
-    }//printTreasure
+    }
 
     public void printDragon() {
         System.out.println(

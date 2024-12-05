@@ -4,6 +4,17 @@ public class DragonTreasure {
     public static void main(String[] args) {
         //FIXME should start the game when run
 
+
+        Door[] doors =
+            {
+                new Door('n'),
+                new Door('e'),
+                new Door('s'),
+                new Door('w')
+            };
+
+        Room test = new Room("test", doors);
+        test.doNarrative();
     }//main
 
     public DragonTreasure()

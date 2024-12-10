@@ -1,4 +1,5 @@
-Examinationsuppgift - Dragon Treasure Del 1
-Från problem till programlogik med klasser, metoder och datastrukturer
-1. Syfte och Mål
-Syftet med denna uppgift är att utveckla en första del av ett äventyrsspel där en spelare kan navigera genom en "dungeon". Uppgiften är att skapa en spelmiljö med klasser, metoder och datastrukturer som beskriver spelets logik och navigering. Målet är att förstå och tillämpa grundläggande objektorienterade programmeringsprinciper i Java.
+Antaganden:
+1. Vi får ha fler rum än diagrammet visar. Ett extra rum, corridor, finns mellan rummet vi kallar för potion och rummet vi kallar monster jämfört med diagrammet.
+2. SetupGame får ha en returtyp annan än void. 
+3. Inte alla konstruktorer behöver göra något. DragonTreasures konstruktor gör inget och behöver egentligen inte existera.
+4. endGame måste inte vara implementerad/användas än. Spelet avslutas i nuläget automatiskt om spelaren tar sig till slutrummet.

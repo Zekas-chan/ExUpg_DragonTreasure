@@ -41,7 +41,8 @@ public class Room {
     }
 
     /**
-     * Konstruerar ett nytt rum
+     * Konstruktor #2
+     * Konstruerar ett nytt AVSLUTsrum
      * @param description Textbeskrivning av rummet, typ "Det är dammigt och luktar gympaskor"
      * @param doors En array där varje element är en dörr
      * @throws IllegalArgumentException om det är för många eller få dörrar i arrayen

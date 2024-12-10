@@ -6,13 +6,6 @@ import java.util.Scanner;
 public class Dungeon {
     private Room currentRoom;
     private String welcomeMessage;
-
-    //testing getter only
-    public Room[][] getMap()
-    {
-        return map;
-    }
-
     private Room[][] map;
     private Player player;
     private boolean gameOver;
@@ -20,7 +13,12 @@ public class Dungeon {
     private int mapX;
     private int mapY;
 
-
+    /**
+     *
+     * @param map
+     * @param welcomeMessage
+     * @param player
+     */
     public Dungeon(Room [][] map, String welcomeMessage, Player player)
     {
         this.map = map;

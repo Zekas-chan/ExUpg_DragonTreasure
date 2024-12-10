@@ -7,16 +7,16 @@ public class DragonTreasure {
     public static void main(String[] args) {
 
         DragonTreasure dragon_treasure = new DragonTreasure();
-        System.out.println("Created dragontreasure");
+        System.out.println("Created dragontreasure"); //debug
         Dungeon dungeon = dragon_treasure.setupGame();//Runs the dungeon setup code, stores separately in memory, stores in dungeon and returns the current placement
-        System.out.println("Created dungeon");
+        System.out.println("Created dungeon"); //debug
 
         dungeon.playGame();
     }//main
 
     public DragonTreasure()
     {
-        //TODO implement constructor
+        //nothing needs doing
     }
 
     public Dungeon setupGame()

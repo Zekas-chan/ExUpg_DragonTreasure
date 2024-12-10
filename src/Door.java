@@ -10,7 +10,6 @@ public class Door {
     }
 
     private char orientation; //north, south, east, west
-    Room targetRoom;
 
 
     /**
@@ -18,13 +17,6 @@ public class Door {
      *
      * @param orientation Riktningen i vilken dörren pekar
      */
-    public Door(char orientation, boolean locked, Room targetRoom)
-    {
-        this.orientation = Character.toLowerCase(orientation); //ser till att det alltid är liten bokstav
-        this.locked = locked;
-        this.targetRoom = targetRoom;
-    }
-
     public Door(char orientation, boolean locked)
     {
         this.orientation = Character.toLowerCase(orientation); //ser till att det alltid är liten bokstav

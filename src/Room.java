@@ -1,21 +1,59 @@
+/**
+ * @Author Saga Gillback, Ella Ni Chana , Philip/Linnea Larsson
+ */
 public class Room {
-    private String roomDescription;
-    private Door[] doors;
+    private final String roomDescription;
+    private final Door[] doors;
+    private boolean hasTreasure;
+    private boolean isExit;
+
+    public boolean isExit()
+    {
+        return isExit;
+    }
+
+
+    public Door[] getDoors()
+    {
+        return doors;
+    }
+
+    public String getRoomDescription()
+    {
+        return roomDescription;
+    }
 
 
     /**
      * Konstruerar ett nytt rum
      * @param description Textbeskrivning av rummet, typ "Det är dammigt och luktar gympaskor"
      * @param doors En array där varje element är en dörr
-     * @throws IllegalArgumentException om det är för många dörrar i arrayen
+     * @throws IllegalArgumentException om det är för många eller få dörrar i arrayen
      */
     public Room(String description, Door[] doors) throws IllegalArgumentException
     {
-        if (doors.length > 4){
-            throw new IllegalArgumentException("Too many doors!");
+        if (doors.length > 4 || doors.length < 1){
+            throw new IllegalArgumentException("Invalid amount of doors!");
         }
         this.roomDescription = description;
         this.doors = doors;
+
+    }
+
+    /**
+     * Konstruerar ett nytt rum
+     * @param description Textbeskrivning av rummet, typ "Det är dammigt och luktar gympaskor"
+     * @param doors En array där varje element är en dörr
+     * @throws IllegalArgumentException om det är för många eller få dörrar i arrayen
+     */
+    public Room(String description, Door[] doors, boolean isExit) throws IllegalArgumentException
+    {
+        if (doors.length > 4 || doors.length < 1){
+            throw new IllegalArgumentException("Invalid amount of doors!");
+        }
+        this.roomDescription = description;
+        this.doors = doors;
+        this.isExit = isExit;
 
     }
 
@@ -25,7 +63,9 @@ public class Room {
     public void doNarrative()
     {
         System.out.println(roomDescription); //rummets beskrivning
-        listDoors(); //dörrarna i rummet
+        if(!isExit) {
+            listDoors(); //dörrarna i rummet
+        }
     }
 
     /**
@@ -33,7 +73,7 @@ public class Room {
      */
     private void listDoors(){
         if(doors.length == 1){
-            System.out.println("There is only one door, the one you came from.");
+            System.out.println("There is only one door, the one you came from. " + "(" + doors[0].getCardinalDirection() +")");
         }//om det bara finns en dörr
         else
         {
@@ -42,7 +82,7 @@ public class Room {
             {
                 System.out.print(doors[i].getCardinalDirection()+", ");
             }
-            System.out.print("and "+ doors[doors.length-1].getCardinalDirection()+".");
+            System.out.print("and "+ doors[doors.length-1].getCardinalDirection()+".\n");
         }//dörrantal > 1
 
 

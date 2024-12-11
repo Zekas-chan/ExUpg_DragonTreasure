@@ -1,8 +1,15 @@
+import Items.Item;
+
+import java.util.ArrayList;
+
 /**
  * @Author Saga Gillback, Ella Ni Chana, Philip Larsson
  */
 public class Player {
-    private final String name; //Defines the property name as a string
+    private final String name;
+    private int healthPoints;
+    private int damage;
+    private ArrayList<Item> inventory; //spelaren bör rimligtvis ha en inventory också
 
     /**
      * Konstruktor

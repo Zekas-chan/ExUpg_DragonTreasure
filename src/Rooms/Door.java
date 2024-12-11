@@ -1,3 +1,5 @@
+package Rooms;
+
 /**
  * @Author Saga Gillback, Ella Ni Chana, Philip Larsson
  */

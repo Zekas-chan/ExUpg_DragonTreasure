@@ -1,3 +1,6 @@
+import Rooms.Door;
+import Rooms.Room;
+
 import java.util.Scanner;
 
 /**

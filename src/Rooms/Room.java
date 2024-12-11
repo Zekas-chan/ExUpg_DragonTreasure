@@ -1,3 +1,5 @@
+package Rooms;
+
 /**
  * @Author Saga Gillback, Ella Ni Chana, Philip Larsson
  */
@@ -31,8 +33,9 @@ public class Room {
      */
     public Room(String description, Door[] doors, boolean isExit) throws IllegalArgumentException
     {
+        //FIXME Bör ändras till subklass nu när vi börjat med arv
         if (doors.length > 4 || doors.length < 1){
-            throw new IllegalArgumentException("Invalid amount of doors!");
+            throw new IllegalArgumentException("Invalid amount of doors! (must be 1-4)");
         }
         this.roomDescription = description;
         this.doors = doors;
@@ -62,6 +65,10 @@ public class Room {
         }
     }
 
+    public void doBattle(){
+        //TODO implementation
+    }
+
     /**
      * Skriver ut en beskrivning av dörrarna i rummet, hjälpmetod till doNarrative.
      */
@@ -76,7 +83,7 @@ public class Room {
             System.out.print("There are " + doors.length + " doors. They point ");
             for (int i = 0; i < doors.length-1; i++)
             {
-                System.out.print(doors[i].getCardinalDirection()+useComma);
+                System.out.print(doors[i].getCardinalDirection() + useComma);
             }
             System.out.print("and "+ doors[doors.length-1].getCardinalDirection()+".\n");
         }//dörrantal > 1

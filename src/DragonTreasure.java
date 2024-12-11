@@ -1,3 +1,6 @@
+import Rooms.Door;
+import Rooms.Room;
+
 import java.util.Scanner;
 
 /**
@@ -39,13 +42,14 @@ public class DragonTreasure {
         /* 4x4 map
 
         null    dead    monster    exit
-        Start   torch    null       null
-        null    key      pot        dragon/treasure
+        Start   torch   corridor   null
+        null    key     potion     dragon/treasure
          */
-        Door[] door_start = {new Door('e', false)}; //door(s) for the room
-        Room start = new Room("You see a cave entrance", door_start); //the room
+		Door[] door_start = {new Door('e', false)}; //door(s) for the room
+		Room start = new Room("You see a cave entrance", door_start); //the room
 
-        Door[] door_torch =
+
+		Door[] door_torch =
                 {
                     new Door('n', false),
                     new Door('s', false)
@@ -88,6 +92,13 @@ public class DragonTreasure {
         Door[] door_exit = {new Door('w', false)};
         Room exit = new Room("Congratulations, you made it!", door_exit, true);
 
+        Door[] door_exit =
+                {
+                    new Door('w', false)
+                };
+        Room exit = new Room("Congrats, you made it!", door_exit, true);
+
+        //assemble rooms into map
         Room[][] map =
                 {
                     {null, dead, monster, exit}, //array [0][n]
@@ -95,10 +106,12 @@ public class DragonTreasure {
                     {null, key, potion, treasure}, //array [2][n]
                 };
 
+        //create player
         System.out.println("Name your hero: ");
         Scanner input = new Scanner(System.in);//Creates a scanner and pauses the program to wait for user input
         Player player = new Player(input.nextLine());//Assigns "player" the name that was input
 
+		//return playable dungeon
         return new Dungeon(map, welcomeMessage, player);
     }
 

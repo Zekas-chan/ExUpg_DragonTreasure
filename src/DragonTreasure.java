@@ -39,7 +39,7 @@ public class DragonTreasure {
         Door[] door_monster = {new Door('w', false), new Door('e', false), new Door('s', false)};
         Room monster = new Room("You smell a musky smell and see three doors", door_monster);
 
-        Door[] door_potion = {new Door('n', false), new Door('w', false), new Door('e', false)};
+        Door[] door_potion = {new Door('n', false), new Door('w', false), new Door('e', true)};
         Room potion = new Room("You hear a low growling and see three doors", door_potion);
 
         Door[] door_key = {new Door('n', false), new Door('e', false)};

@@ -42,9 +42,6 @@ public class DragonTreasure {
         Door[] door_potion = {new Door('n', false), new Door('w', false), new Door('e', false)};
         Room potion = new Room("You hear a low growling and see three doors", door_potion);
 
-        Door[] door_corridor = {new Door('n', false), new Door('s', false)};
-        Room corridor = new Room("You see a narrow corridor leading to another room.", door_corridor);
-
         Door[] door_key = {new Door('n', false), new Door('e', false)};
         Room key = new Room("You hear water nearby and see two doors", door_key);
 
@@ -57,7 +54,7 @@ public class DragonTreasure {
         Room[][] map =
                 {
                     {null, dead, monster, exit}, //array [0][n]
-                    {start, torch, corridor, null}, //array [1][n]
+                    {start, torch, null, null}, //array [1][n]
                     {null, key, potion, treasure}, //array [2][n]
                 };
 

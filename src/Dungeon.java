@@ -34,81 +34,87 @@ public class Dungeon {
     {
         System.out.println(welcomeMessage + ", " + player.getName());
 
-        do
+        do //menu loop
         {
             if(currentRoom.isExit()){
                 gameOver = true;
                 currentRoom.doNarrative();
                 return;
+                //FIXME ska skrivas ordentlig spelslutskod i del 2
             }
             currentRoom.doNarrative();
-            Scanner input = new Scanner(System.in);
-            char user_input = Character.toLowerCase(input.nextLine().charAt(0));//converts the user input into a char and takes the first letter, to compare
+            System.out.print("Where will you go?: ");
+            Scanner reader = new Scanner(System.in);
+            char user_input = Character.toLowerCase(reader.nextLine().charAt(0));//converts the user input into a char and takes the first letter, to compare
+
             move (user_input);
         }while (!gameOver);
-
-        currentRoom.doNarrative();
     }
 
-    private void move(char c)
+    /**
+     * Hjälpmetod till playGame som sköter rörelse.
+     * @param input Spelarens avsedda rörelseriktning
+     */
+    private void move(char input)
     {
         boolean allowed = false;
-        switch(c)
+        for (Door door : currentRoom.getDoors()) //för varje dörr i Doors[]
+        {
+			if (door.getOrientation() == input && !door.isLocked()) //kolla om en dörr med rätt riktning finns samt om den är låst
+			{
+				allowed = true; //om inputriktningen == dörrens riktning och den inte är låst
+				break; //avsluta loop
+			}
+        }
+
+        switch(input)
         {
             case 'n':
-                for(Door d: currentRoom.getDoors()){
-                    if (d.getOrientation() == 'n' && !d.isLocked()){ //if orientation of door matches movement and door is not locked
-                        allowed = true;
-                        mapY--; //go up one array
-                    }
-                }
                 if(allowed){
-                    currentRoom = map[mapY][mapX];
+                    do
+                    {
+                        currentRoom = map[--mapY][mapX]; //inkrementering FÖRE variabeln används
+                    }
+                    while (currentRoom == null); //åtminstone en gång, tills antingen ett rum nås eller IndexOutOfBoundsException kastas
                 }else{
                     System.out.println("You can't go there.");
                 }
                 break;
-            case 'e':
-                for(Door d: currentRoom.getDoors()){
-                    if (d.getOrientation() == 'e' && !d.isLocked()){ //if orientation of door matches movement and door is not locked
-                        allowed = true;
-                        mapX++; //go up one index
-                    }
-                }
+            case 'e': //alla andra cases är samma mönster men i andra riktningar
                 if(allowed){
-                    currentRoom = map[mapY][mapX];
+                    do
+                    {
+                        currentRoom = map[mapY][++mapX];
+                    }
+                    while (currentRoom == null);
                 }else{
                     System.out.println("You can't go there.");
                 }
                 break;
             case 's':
-                for(Door d: currentRoom.getDoors()){
-                    if (d.getOrientation() == 's' && !d.isLocked()){ //if orientation of door matches movement and door is not locked
-                        allowed = true;
-                        mapY++; //go down one array
-                    }
-                }
                 if(allowed){
-                    currentRoom = map[mapY][mapX];
+                    do
+                    {
+                        currentRoom = map[++mapY][mapX];
+                    }
+                    while (currentRoom == null);
                 }else{
                     System.out.println("You can't go there.");
                 }
                 break;
             case 'w':
-                for(Door d: currentRoom.getDoors()){
-                    if (d.getOrientation() == 'w' && !d.isLocked()){ //if orientation of door matches movement and door is not locked
-                        allowed = true;
-                        mapX--; //go down one index
-                    }
-                }
                 if(allowed){
-                    currentRoom = map[mapY][mapX];
+                    do
+                    {
+                        currentRoom = map[mapY][--mapX];
+                    }
+                    while (currentRoom == null);
                 }else{
                     System.out.println("You can't go there.");
                 }
                 break;
-            default:
-                return;
+            default: //inputs andra än nsew
+                System.out.println("Not a valid move");
         }
     }
 

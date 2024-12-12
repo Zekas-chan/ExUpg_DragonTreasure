@@ -78,10 +78,11 @@ public class Room {
         }//om det bara finns en dörr
         else
         {
+            String useComma = doors.length == 2 ? " " : ", "; //inget komma före "and" om det bara finns två dörrar
             System.out.print("There are " + doors.length + " doors. They point ");
             for (int i = 0; i < doors.length-1; i++)
             {
-                System.out.print(doors[i].getCardinalDirection()+", ");
+                System.out.print(doors[i].getCardinalDirection()+useComma);
             }
             System.out.print("and "+ doors[doors.length-1].getCardinalDirection()+".\n");
         }//dörrantal > 1

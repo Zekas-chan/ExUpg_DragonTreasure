@@ -28,7 +28,7 @@ public class Dungeon {
         this.currentRoom = map[1][0]; //start room location from SetupGame
         this.mapX = 0;
         this.mapY = 1;
-    }
+    }//Makes sure the dungeon is set up properly, as to not start us in a void
 
     public void playGame()
     {
@@ -48,7 +48,7 @@ public class Dungeon {
             char user_input = Character.toLowerCase(reader.nextLine().charAt(0));//converts the user input into a char and takes the first letter, to compare
 
             move (user_input);
-        }while (!gameOver);
+        }while (!gameOver);//While loop körs tills gameOver är sant
     }
 
     /**

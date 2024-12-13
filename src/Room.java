@@ -5,13 +5,13 @@ public class Room {
     private final String roomDescription;
     private final Door[] doors;
     private boolean hasTreasure;
-    private boolean isExit;
+    private boolean isExit;//Defines the properties of type Room
 
+    //Getter for flag isExit
     public boolean isExit()
     {
         return isExit;
     }
-
 
     public Door[] getDoors()
     {
@@ -74,8 +74,8 @@ public class Room {
      */
     private void listDoors(){
         if(doors.length == 1){
-            System.out.println("There is only one door, the one you came from. " + "(" + doors[0].getCardinalDirection() +")");
-        }//om det bara finns en dörr
+            System.out.println("There is only one door, the entrance to the cave. " + "(" + doors[0].getCardinalDirection() +")");
+        }//om det bara finns en dörr, precis i början
         else
         {
             String useComma = doors.length == 2 ? " " : ", "; //inget komma före "and" om det bara finns två dörrar

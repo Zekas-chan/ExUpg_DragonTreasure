@@ -1,21 +1,14 @@
 /**
- * @Author Saga Gillback, Ella Ni Chana , Philip/Linnea Larsson
+ * @Author Saga Gillback, Ella Ni Chana, Philip Larsson
  */
 public class Door {
     private boolean locked;
-
-    public char getOrientation()
-    {
-        return orientation;
-    }
-
     private char orientation; //north, south, east, west
 
-
     /**
-     * Konstruktor för dörr.
-     *
-     * @param orientation Riktningen i vilken dörren pekar
+     * Konstruktor för dörr
+     * @param orientation Riktningen för dörren
+     * @param locked Om den är låst
      */
     public Door(char orientation, boolean locked)
     {
@@ -36,13 +29,13 @@ public class Door {
      * Get-metod för orientation
      * @return Dörrens "position" som en char
      */
-    public char getPosition()
+    public char getOrientation()
     {
         return orientation;
     }
 
     /**
-     *
+     * Dörrens riktning som ord i stället för char
      * @return Dörrens riktning utskriven
      */
     public String getCardinalDirection()

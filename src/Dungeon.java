@@ -1,23 +1,24 @@
 import java.util.Scanner;
 
 /**
- * @Author Saga Gillback, Ella Ni Chana , Philip/Linnea Larsson
+ * @Author Saga Gillback, Ella Ni Chana, Philip Larsson
+ *
+ * Definierar ett spelbart dungeonobjekt
  */
 public class Dungeon {
-    private Room currentRoom;
-    private String welcomeMessage;
-    private Room[][] map;
-    private Player player;
-    private boolean gameOver;
-
-    private int mapX;
+    private Room currentRoom; //rummet spelaren befinner sig i
+    private String welcomeMessage; //välkomstmeddelande
+    private Room[][] map; //spelnivåns layout
+    private Player player; //spelaren
+    private boolean gameOver; //avgör om spelet körs
+    private int mapX; //koordinatvariabler
     private int mapY;
 
     /**
-     *
-     * @param map
-     * @param welcomeMessage
-     * @param player
+     * Konstruktor för dungeon. Måste ha
+     * @param map som representerar spelnivå
+     * @param welcomeMessage string för välkomstmeddelande
+     * @param player ett spelarobjekt
      */
     public Dungeon(Room [][] map, String welcomeMessage, Player player)
     {
@@ -30,13 +31,17 @@ public class Dungeon {
         this.mapY = 1;
     }//Makes sure the dungeon is set up properly, as to not start us in a void
 
+    /**
+     * Kör spelet genom en loop som frågar efter var spelaren vill gå
+     */
     public void playGame()
     {
         System.out.println(welcomeMessage + ", " + player.getName());
 
         do //menu loop
         {
-            if(currentRoom.isExit()){
+            System.out.println();
+            if(currentRoom.isExit()){ //kollar om spelet ska avslutas (om spelaren hittar utgången)
                 gameOver = true;
                 currentRoom.doNarrative();
                 return;
@@ -58,7 +63,7 @@ public class Dungeon {
     private void move(char input)
     {
         boolean allowed = false; //om rörelsen tillåts
-        String cancelMessage = "Not a valid move."; //meddelande om rörelsen inte tillåts; default
+        String cancelMessage = "Not a valid direction."; //meddelande om rörelsen inte tillåts; default
         for (Door door : currentRoom.getDoors()) //för varje dörr i Doors[]
         {
 			if (door.getOrientation() == input && !door.isLocked()) //om en dörr med rätt riktning finns samt om den är olåst
@@ -69,8 +74,9 @@ public class Dungeon {
             else if (door.getOrientation() == input && door.isLocked()) //om en dörr med rätt riktning finns men den är låst
             {
                 cancelMessage = "The door is locked.";
+                break;
             }
-            else //om ingen dörr i den riktningen finns
+            else //om ingen dörr i den riktningen hittas
             {
                 cancelMessage = "There is no door there.";
             }

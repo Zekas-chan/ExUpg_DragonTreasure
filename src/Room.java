@@ -1,28 +1,10 @@
 /**
- * @Author Saga Gillback, Ella Ni Chana , Philip/Linnea Larsson
+ * @Author Saga Gillback, Ella Ni Chana, Philip Larsson
  */
 public class Room {
     private final String roomDescription;
-    private final Door[] doors;
-    private boolean hasTreasure;
     private boolean isExit;//Defines the properties of type Room
-
-    //Getter for flag isExit
-    public boolean isExit()
-    {
-        return isExit;
-    }
-
-    public Door[] getDoors()
-    {
-        return doors;
-    }
-
-    public String getRoomDescription()
-    {
-        return roomDescription;
-    }
-
+    private final Door[] doors;
 
     /**
      * Konstruerar ett nytt rum
@@ -37,10 +19,10 @@ public class Room {
         }
         this.roomDescription = description;
         this.doors = doors;
-
     }
 
     /**
+     * TODO ärv ner som subklass istället
      * Konstruktor #2
      * Konstruerar ett nytt AVSLUTsrum
      * @param description Textbeskrivning av rummet, typ "Det är dammigt och luktar gympaskor"
@@ -58,8 +40,19 @@ public class Room {
 
     }
 
+    //Getter for flag isExit
+    public boolean isExit()
+    {
+        return isExit;
+    }
+    //getter för dörrarrayen
+    public Door[] getDoors()
+    {
+        return doors;
+    }
+
     /**
-     * Fungerar i nuläget för testning.
+     * Skriver ut beskrivningen på rummet samt dess dörrar om det inte är utgången
      */
     public void doNarrative()
     {
@@ -70,11 +63,12 @@ public class Room {
     }
 
     /**
-     * Skriver ut en beskrivning av dörrarna i rummet.
+     * Skriver ut en beskrivning av dörrarna i rummet, hjälpmetod till doNarrative.
      */
     private void listDoors(){
         if(doors.length == 1){
-            System.out.println("There is only one door, the entrance to the cave. " + "(" + doors[0].getCardinalDirection() +")");
+            //TODO mer generisk för alla rum med en dörr
+            System.out.println("There is only one way to go, the entrance to the cave. " + "(" + doors[0].getCardinalDirection() + ")");
         }//om det bara finns en dörr, precis i början
         else
         {
@@ -86,9 +80,5 @@ public class Room {
             }
             System.out.print("and "+ doors[doors.length-1].getCardinalDirection()+".\n");
         }//dörrantal > 1
-
-
-
     }
 }
-

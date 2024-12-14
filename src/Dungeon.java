@@ -57,14 +57,24 @@ public class Dungeon {
      */
     private void move(char input)
     {
-        boolean allowed = false;
+        boolean allowed = false; //om rörelsen tillåts
+        String cancelMessage = "Not a valid move."; //meddelande om rörelsen inte tillåts; default
         for (Door door : currentRoom.getDoors()) //för varje dörr i Doors[]
         {
-			if (door.getOrientation() == input && !door.isLocked()) //kolla om en dörr med rätt riktning finns samt om den är låst
+			if (door.getOrientation() == input && !door.isLocked()) //om en dörr med rätt riktning finns samt om den är olåst
 			{
 				allowed = true; //om inputriktningen == dörrens riktning och den inte är låst
 				break; //avsluta loop
-			}
+            }
+            else if (door.getOrientation() == input && door.isLocked()) //om en dörr med rätt riktning finns men den är låst
+            {
+                cancelMessage = "The door is locked.";
+            }
+            else //om ingen dörr i den riktningen finns
+            {
+                cancelMessage = "There is no door there.";
+            }
+
         }
 
         switch(input)
@@ -76,8 +86,8 @@ public class Dungeon {
                         currentRoom = map[--mapY][mapX]; //inkrementering FÖRE variabeln används
                     }
                     while (currentRoom == null); //åtminstone en gång, tills antingen ett rum nås eller IndexOutOfBoundsException kastas
-                }else{
-                    System.out.println("You can't go there.");
+                }else{ //om rörelsen inte tillåts
+                    System.out.println(cancelMessage);
                 }
                 break;
             case 'e': //alla andra cases är samma mönster men i andra riktningar
@@ -88,7 +98,7 @@ public class Dungeon {
                     }
                     while (currentRoom == null);
                 }else{
-                    System.out.println("You can't go there.");
+                    System.out.println(cancelMessage);
                 }
                 break;
             case 's':
@@ -99,7 +109,7 @@ public class Dungeon {
                     }
                     while (currentRoom == null);
                 }else{
-                    System.out.println("You can't go there.");
+                    System.out.println(cancelMessage);
                 }
                 break;
             case 'w':
@@ -110,13 +120,11 @@ public class Dungeon {
                     }
                     while (currentRoom == null);
                 }else{
-                    System.out.println("You can't go there.");
+                    System.out.println(cancelMessage);
                 }
                 break;
             default: //inputs andra än nsew
-                System.out.println("Not a valid move");
+                System.out.println(cancelMessage);
         }
     }
-
-
 }

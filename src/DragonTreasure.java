@@ -1,5 +1,4 @@
-import Rooms.Door;
-import Rooms.Room;
+import Rooms.*;
 
 import java.util.Scanner;
 
@@ -39,14 +38,14 @@ public class DragonTreasure {
      */
     public Dungeon setupGame()
     {
-        /* 4x4 map
+        /* 4x3 map
 
-        null    dead    monster    exit
-        Start   torch   corridor   null
-        null    key     potion     dragon/treasure
+        null    dead    monster     exit
+        Start   torch   null        null
+        null    key     potion      dragon/treasure
          */
 		Door[] door_start = {new Door('e', false)}; //door(s) for the room
-		Room start = new Room("You see a cave entrance", door_start); //the room
+		StartRoom start = new StartRoom("You see a cave entrance to the east.", door_start); //the room
 
 
 		Door[] door_torch =
@@ -90,13 +89,7 @@ public class DragonTreasure {
         Room treasure = new Room("Wow, TREASURE!", door_treasure);
 
         Door[] door_exit = {new Door('w', false)};
-        Room exit = new Room("Congratulations, you made it!", door_exit, true);
-
-        Door[] door_exit =
-                {
-                    new Door('w', false)
-                };
-        Room exit = new Room("Congrats, you made it!", door_exit, true);
+        ExitRoom exit = new ExitRoom("Congratulations, you made it!", door_exit);
 
         //assemble rooms into map
         Room[][] map =

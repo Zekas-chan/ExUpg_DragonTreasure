@@ -5,49 +5,30 @@ package Rooms;
  */
 public class Room {
     private final String roomDescription;
-    private boolean isExit;//Defines the properties of type Room
     private final Door[] doors;
 
     /**
      * Konstruerar ett nytt rum
+     *
      * @param description Textbeskrivning av rummet, typ "Det är dammigt och luktar gympaskor"
-     * @param doors En array där varje element är en dörr
+     * @param doors       En array där varje element är en dörr
      * @throws IllegalArgumentException om det är för många eller få dörrar i arrayen
      */
     public Room(String description, Door[] doors) throws IllegalArgumentException
     {
-        if (doors.length > 4 || doors.length < 1){
+        if (doors.length > 4 || doors.length < 1)
+        {
             throw new IllegalArgumentException("Invalid amount of doors!");
         }
         this.roomDescription = description;
         this.doors = doors;
     }
 
-    /**
-     * TODO ärv ner som subklass istället
-     * Konstruktor #2
-     * Konstruerar ett nytt AVSLUTsrum
-     * @param description Textbeskrivning av rummet, typ "Det är dammigt och luktar gympaskor"
-     * @param doors En array där varje element är en dörr
-     * @throws IllegalArgumentException om det är för många eller få dörrar i arrayen
-     */
-    public Room(String description, Door[] doors, boolean isExit) throws IllegalArgumentException
+    public String getRoomDescription()
     {
-        //FIXME Bör ändras till subklass nu när vi börjat med arv
-        if (doors.length > 4 || doors.length < 1){
-            throw new IllegalArgumentException("Invalid amount of doors! (must be 1-4)");
-        }
-        this.roomDescription = description;
-        this.doors = doors;
-        this.isExit = isExit;
-
+        return roomDescription;
     }
 
-    //Getter for flag isExit
-    public boolean isExit()
-    {
-        return isExit;
-    }
     //getter för dörrarrayen
     public Door[] getDoors()
     {
@@ -60,32 +41,32 @@ public class Room {
     public void doNarrative()
     {
         System.out.println(roomDescription); //rummets beskrivning
-        if(!isExit) {
-            listDoors(); //dörrarna i rummet
-        }
+        listDoors(); //dörrarna i rummet
     }
 
-    public void doBattle(){
+    public void doBattle()
+    {
         //TODO implementation
     }
 
     /**
      * Skriver ut en beskrivning av dörrarna i rummet, hjälpmetod till doNarrative.
      */
-    private void listDoors(){
-        if(doors.length == 1){
-            //TODO mer generisk för alla rum med en dörr
-            System.out.println("There is only one way to go, the entrance to the cave. " + "(" + doors[0].getCardinalDirection() + ")");
+    private void listDoors()
+    {
+        if (doors.length == 1)
+        {
+            System.out.println("There is only one exit, the way back where you came from. " + "(" + doors[0].getCardinalDirection() + ")");
         }//om det bara finns en dörr, precis i början
         else
         {
             String useComma = doors.length == 2 ? " " : ", "; //inget komma före "and" om det bara finns två dörrar
             System.out.print("There are " + doors.length + " doors. They point ");
-            for (int i = 0; i < doors.length-1; i++)
+            for (int i = 0; i < doors.length - 1; i++)
             {
-                System.out.print(doors[i].getCardinalDirection() + useComma);
-            }
-            System.out.print("and "+ doors[doors.length-1].getCardinalDirection()+".\n");
-        }//dörrantal > 1
+                System.out.print(doors[i].getCardinalDirection() + useComma); //oxfordkomma är bäst
+            }//dörrantal > 1
+            System.out.print("and " + doors[doors.length - 1].getCardinalDirection() + ".\n");
+        }
     }
 }

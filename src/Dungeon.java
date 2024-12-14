@@ -1,5 +1,4 @@
-import Rooms.Door;
-import Rooms.Room;
+import Rooms.*;
 
 import java.util.Scanner;
 
@@ -44,7 +43,7 @@ public class Dungeon {
         do //menu loop
         {
             System.out.println();
-            if(currentRoom.isExit()){ //kollar om spelet ska avslutas (om spelaren hittar utgången)
+            if(currentRoom instanceof ExitRoom){ //kollar om spelet ska avslutas (om spelaren hittar utgången)
                 gameOver = true;
                 currentRoom.doNarrative();
                 return;

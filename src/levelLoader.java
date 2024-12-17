@@ -25,7 +25,8 @@ public class levelLoader{
 	private Room[][] test()
 	{
 		Door[] door_start = {new Door('w', false)};
-		Room start = new StartRoom("Test start", door_start);
+		Room start = new StartRoom("Right start", door_start);
+		Room start2 = new StartRoom("Wrong start", door_start);
 
 		Door[] test1_door =
 				{

@@ -28,10 +28,25 @@ public class Dungeon {
         this.welcomeMessage = welcomeMessage;
         this.player = player;
 
-        this.currentRoom = map[1][0]; //start room location from SetupGame
-        this.mapX = 0;
-        this.mapY = 1;
-    }//Makes sure the dungeon is set up properly, as to not start us in a void
+        //Hitta startrummet - måste ligga sist pga return, alternativt flytta till egen metod?
+        //Har för mig att metodanrop från konstruktorn kan vara risky, osäker på om det är best practice eller inte
+        for (int i = 0; i < map.length; i++)
+        {
+			for (int j = 0; j < map[i].length; j++)
+			{
+				if (map[i][j] instanceof StartRoom)
+				{
+					this.currentRoom = map[i][j];
+					this.mapX = j;
+					this.mapY = i;
+					break;
+				}
+
+			}
+        }
+    }
+
+    //todo menu loop, victory check, item check, monster check
 
     /**
      * Kör spelet genom en loop som frågar efter var spelaren vill gå

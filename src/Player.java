@@ -20,6 +20,7 @@ public class Player {
         this.name = name;
     }//Constructor
 
+    //getters
     /**
      * @return spelarens namn
      */

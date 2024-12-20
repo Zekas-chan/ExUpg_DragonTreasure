@@ -5,7 +5,7 @@ package Rooms;
  */
 public class Door {
     private boolean locked;
-    private char orientation; //north, south, east, west
+    private final char orientation; //north, south, east, west
 
     /**
      * Konstruktor för dörr
@@ -38,20 +38,18 @@ public class Door {
 
     /**
      * Dörrens riktning som ord i stället för char
+     * TODO behöver ändras när nycklar är implementerade med all sannolikhet
      * @return Dörrens riktning utskriven
      */
-    public String getCardinalDirection()
+    public String getMovementHint()
     {
+        String showLock = locked ? "[locked]" : "";
         switch(orientation)
         {
-            case 'n':
-                return "north";
-            case 'e':
-                return "east";
-            case 's':
-                return "south";
-            case 'w':
-                return "west";
+            case 'n': return "north [n] " + showLock;
+            case 'e': return "east [e] " + showLock;
+            case 's': return "south [s] " + showLock;
+            case 'w': return "west [w] " + showLock;
             default:
                 return "This should never display";
         }

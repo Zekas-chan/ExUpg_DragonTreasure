@@ -38,6 +38,7 @@ public class DragonTreasure {
      */
     public Dungeon setupGame()
     {
+        System.out.println("Welcome to Dragon Treasure");
         //local variables
         Scanner input = new Scanner(System.in);//Creates a scanner and pauses the program to wait for user input
         levelLoader loader = new levelLoader(); //skapar en level när den anropas
@@ -46,8 +47,8 @@ public class DragonTreasure {
         System.out.println("Name your hero: ");
         Player player = new Player(input.nextLine());//Assigns "player" the name that was input
 
-        //select level
-        System.out.println("Select level(0, 1): ");
+        //select level - mest för debugsyfte, ken ersättas med att hårdkoda level 1 vid inlämning
+        System.out.println("Select level(0 - test, 1 - the dungeon): ");
         int level = input.nextInt();
         Room[][] map = loader.selectLevel(level);
 
@@ -62,73 +63,5 @@ public class DragonTreasure {
     public void endGame()
     {
         System.exit(0);
-    }
-
-    /**
-     * Skriver ut en skatt
-     */
-    private void printTreasure()
-    {
-        System.out.println(
-                "                  _.--.\n" +
-                        "              _.-'_:-'||\n" +
-                        "          _.-'_.-::::'||\n" +
-                        "     _.-:'_.-::::::'  ||\n" +
-                        "   .'`-.-:::::::'     ||\n" +
-                        "  /.'`;|:::::::'      ||_\n" +
-                        " ||   ||::::::'      _.;._'-._\n" +
-                        " ||   ||:::::'   _.-!oo @.!-._'-.\n" +
-                        " '.  ||:::::.-!() oo @!()@.-'_.||\n" +
-                        "   '.'-;|:.-'.&$@.& ()$%-'o.'\\U||\n" +
-                        "     `>'-.!@%()@'@_%-'_.-o _.|'||\n" +
-                        "      ||-._'-.@.-'_.-' _.-o  |'||\n" +
-                        "      ||=[ '-._.-\\U/.-'    o |'||\n" +
-                        "      || '-.]=|| |'|      o  |'||\n" +
-                        "      ||      || |'|        _| ';\n" +
-                        "      ||      || |'|    _.-'_.-'\n" +
-                        "      |'-._   || |'|_.-'_.-'\n" +
-                        "      '-._'-.|| |' `_.-'\n" +
-                        "           '-.||_/.-'\n");
-    }
-
-    /**
-     * Skriver ut en drake
-     */
-    public void printDragon()
-    {
-        System.out.println(
-                "                                                  .~))>>\n" +
-                        "                                                 .~)>>\n" +
-                        "                                               .~))))>>>\n" +
-                        "                                             .~))>>             ___\n" +
-                        "                                           .~))>>)))>>      .-~))>>\n" +
-                        "                                         .~)))))>>       .-~))>>)>\n" +
-                        "                                       .~)))>>))))>>  .-~)>>)>\n" +
-                        "                   )                 .~))>>))))>>  .-~)))))>>)>\n" +
-                        "                ( )@@*)             //)>))))))  .-~))))>>)>\n" +
-                        "              ).@(@@               //))>>))) .-~))>>)))))>>)>\n" +
-                        "            (( @.@).              //))))) .-~)>>)))))>>)>\n" +
-                        "          ))  )@@*.@@ )          //)>))) //))))))>>))))>>)>\n" +
-                        "       ((  ((@@@.@@             |/))))) //)))))>>)))>>)>\n" +
-                        "      )) @@*. )@@ )   (\\_(\\-\\b  |))>)) //)))>>)))))))>>)>\n" +
-                        "    (( @@@(.@(@ .    _/`-`  ~|b |>))) //)>>)))))))>>)>\n" +
-                        "     )* @@@ )@*     (@)  (@) /\\b|))) //))))))>>))))>>\n" +
-                        "   (( @. )@( @ .   _/  /    /  \\b)) //))>>)))))>>>_._\n" +
-                        "    )@@ (@@*)@@.  (6///6)- / ^  \\b)//))))))>>)))>>   ~~-.\n" +
-                        " ( @jgs@@. @@@.*@_ VvvvvV//  ^  \\b/)>>))))>>      _.     `bb\n" +
-                        " ((@@ @@@*.(@@ . - | o |' \\ (  ^   \\b)))>>        .'       b`,\n" +
-                        "   ((@@).*@@ )@ )   \\^^^/  ((   ^  ~)_        \\  /           b `,\n" +
-                        "     (@@. (@@ ).     `-'   (((   ^    `\\ \\ \\ \\ \\|             b  `.\n" +
-                        "       (*.@*              / ((((        \\| | |  \\       .       b `.\n" +
-                        "                         / / (((((  \\    \\ /  _.-~\\     Y,      b  ;\n" +
-                        "                        / / / (((((( \\    \\.-~   _.`\" _.-~`,    b  ;\n" +
-                        "                       /   /   `(((((()    )    (((((~      `,  b  ;\n" +
-                        "                     _/  _/      `\"\"\"/   /'                  ; b   ;\n" +
-                        "                 _.-~_.-~           /  /'                _.'~bb _.'\n" +
-                        "               ((((~~              / /'              _.'~bb.--~\n" +
-                        "                                  ((((          __.-~bb.-~\n" +
-                        "                                              .'  b .~~\n" +
-                        "                                              :bb ,' \n" +
-                        "                                              ~~~~\n");
     }
 }//class

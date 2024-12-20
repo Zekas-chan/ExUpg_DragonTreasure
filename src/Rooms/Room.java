@@ -24,6 +24,7 @@ public class Room {
         this.doors = doors;
     }
 
+    //getters
     public String getRoomDescription()
     {
         return roomDescription;
@@ -50,23 +51,20 @@ public class Room {
     }
 
     /**
-     * Skriver ut en beskrivning av dörrarna i rummet, hjälpmetod till doNarrative.
+     * Skriver ut en beskrivning av dörrarna i rummet.
      */
     private void listDoors()
     {
         if (doors.length == 1)
         {
-            System.out.println("There is only one exit, the way back where you came from. " + "(" + doors[0].getCardinalDirection() + ")");
+            System.out.println("There is only one door, the way back where you came from. You can only go " + doors[0].getMovementHint());
         }//om det bara finns en dörr, precis i början
         else
         {
-            String useComma = doors.length == 2 ? " " : ", "; //inget komma före "and" om det bara finns två dörrar
-            System.out.print("There are " + doors.length + " doors. They point ");
-            for (int i = 0; i < doors.length - 1; i++)
-            {
-                System.out.print(doors[i].getCardinalDirection() + useComma); //oxfordkomma är bäst
-            }//dörrantal > 1
-            System.out.print("and " + doors[doors.length - 1].getCardinalDirection() + ".\n");
+			for (Door door : doors)
+			{
+				System.out.println("You can go " + door.getMovementHint());
+			}//dörrantal > 1
         }
     }
 }

@@ -52,7 +52,7 @@ public class levelLoader{
 		Door[] door_exit = {new Door('e', false)};
 		Room exit = new ExitRoom("Test room exit", door_exit);
 
-		return new Room[][]{{exit, test1, test2, test3, start}};
+		return new Room[][]{{exit, test1, start, test2, test3, start2}};
 
 	};
 
@@ -68,7 +68,7 @@ public class levelLoader{
         null    key     potion      dragon/treasure
          */
 		Door[] door_start = {new Door('e', false)}; //door(s) for the room
-		StartRoom start = new StartRoom("You see a cave entrance to the east.", door_start); //the room
+		StartRoom start = new StartRoom("You see a cave entrance to the east. To enter the cave, type \"e\" and [Enter].", door_start); //the room
 
 		Door[] door_torch =
 				{

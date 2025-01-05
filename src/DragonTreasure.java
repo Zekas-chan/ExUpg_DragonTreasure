@@ -1,3 +1,4 @@
+import Player.Player;
 import Rooms.*;
 
 import java.util.Scanner;

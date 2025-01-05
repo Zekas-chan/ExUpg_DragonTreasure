@@ -33,7 +33,7 @@ public class levelLoader{
 					new Door('w', false),
 					new Door('e', false)
 				};
-		Room test1 = new Room("Test room 1", test1_door);
+		Room test1 = new Room("Test room 1", test1_door,new Monster("monster", "A", "the monster", printDragon(), 2, 1));
 
 		Door[] test2_door =
 				{
@@ -90,13 +90,13 @@ public class levelLoader{
 						new Door('e', false),
 						new Door('s', false)
 				};
-		Room monster = new Room("You smell a musky smell.", door_monster);
+		Room monster = new Room("You smell a musky smell.", door_monster,new Monster("monster", "A", "the monster",10,1));
 
 		Door[] door_potion =
 				{
 						new Door('n', false),
 						new Door('w', false),
-						new Door('e', true)
+						new Door('e', false)
 				};
 		Room potion = new Room("You hear a low growling.", door_potion);
 
@@ -108,7 +108,7 @@ public class levelLoader{
 		Room key = new Room("You hear water nearby.", door_key);
 
 		Door[] door_treasure = {new Door('w', false)};
-		Room treasure = new Room("Wow, TREASURE!", door_treasure);
+		Room treasure = new Room("Wow, TREASURE!", door_treasure, new Monster("dragon", "A", "the dragon", printDragon(), 10,1));
 
 		Door[] door_exit = {new Door('w', false)};
 		ExitRoom exit = new ExitRoom("Congratulations, you made it!", door_exit);
@@ -119,5 +119,42 @@ public class levelLoader{
 					{start, torch, null, null}, //array [1][n]
 					{null, key, potion, treasure}, //array [2][n]
 				};
+	}
+	private String printDragon()
+	{
+		return
+				"                                                  .~))>>\n" +
+						"                                                 .~)>>\n" +
+						"                                               .~))))>>>\n" +
+						"                                             .~))>>             ___\n" +
+						"                                           .~))>>)))>>      .-~))>>\n" +
+						"                                         .~)))))>>       .-~))>>)>\n" +
+						"                                       .~)))>>))))>>  .-~)>>)>\n" +
+						"                   )                 .~))>>))))>>  .-~)))))>>)>\n" +
+						"                ( )@@*)             //)>))))))  .-~))))>>)>\n" +
+						"              ).@(@@               //))>>))) .-~))>>)))))>>)>\n" +
+						"            (( @.@).              //))))) .-~)>>)))))>>)>\n" +
+						"          ))  )@@*.@@ )          //)>))) //))))))>>))))>>)>\n" +
+						"       ((  ((@@@.@@             |/))))) //)))))>>)))>>)>\n" +
+						"      )) @@*. )@@ )   (\\_(\\-\\b  |))>)) //)))>>)))))))>>)>\n" +
+						"    (( @@@(.@(@ .    _/`-`  ~|b |>))) //)>>)))))))>>)>\n" +
+						"     )* @@@ )@*     (@)  (@) /\\b|))) //))))))>>))))>>\n" +
+						"   (( @. )@( @ .   _/  /    /  \\b)) //))>>)))))>>>_._\n" +
+						"    )@@ (@@*)@@.  (6///6)- / ^  \\b)//))))))>>)))>>   ~~-.\n" +
+						" ( @jgs@@. @@@.*@_ VvvvvV//  ^  \\b/)>>))))>>      _.     `bb\n" +
+						" ((@@ @@@*.(@@ . - | o |' \\ (  ^   \\b)))>>        .'       b`,\n" +
+						"   ((@@).*@@ )@ )   \\^^^/  ((   ^  ~)_        \\  /           b `,\n" +
+						"     (@@. (@@ ).     `-'   (((   ^    `\\ \\ \\ \\ \\|             b  `.\n" +
+						"       (*.@*              / ((((        \\| | |  \\       .       b `.\n" +
+						"                         / / (((((  \\    \\ /  _.-~\\     Y,      b  ;\n" +
+						"                        / / / (((((( \\    \\.-~   _.`\" _.-~`,    b  ;\n" +
+						"                       /   /   `(((((()    )    (((((~      `,  b  ;\n" +
+						"                     _/  _/      `\"\"\"/   /'                  ; b   ;\n" +
+						"                 _.-~_.-~           /  /'                _.'~bb _.'\n" +
+						"               ((((~~              / /'              _.'~bb.--~\n" +
+						"                                  ((((          __.-~bb.-~\n" +
+						"                                              .'  b .~~\n" +
+						"                                              :bb ,' \n" +
+						"                                              ~~~~\n";
 	}
 }

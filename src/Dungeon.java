@@ -1,3 +1,4 @@
+import Player.Player;
 import Rooms.*;
 
 import java.util.Scanner;
@@ -66,11 +67,16 @@ public class Dungeon {
             //TODO item check, monster check, player death check(kanske sker i doBattle?)
             System.out.println(); //mellanrum för varje handling spelaren tar
 
-            //beskriv rummet och eventuella invånare
-            if(shouldNarrate) currentRoom.doNarrative();
-
+            if (currentRoom.monsterPresent()) currentRoom.doBattle(player);
+            if (!player.isAlive()) {
+                System.out.println("You've died! D:");
+                break;
+            }
             //om det finns monster sker en strid
             //if (currentRoom.monsterPresent) currentRoom.doBattle();
+
+            //beskriv rummet och eventuella invånare
+            if(shouldNarrate) currentRoom.doNarrative();
 
             //om det finns items ska deras beskrivning och ledtråd för att plocka upp visas
             //if (currentRoom.hasItem) System.out.println("You see" + currentRoom.getItem.getItemDescription + ". You can pick it up [p]")

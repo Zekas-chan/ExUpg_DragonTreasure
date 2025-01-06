@@ -9,12 +9,10 @@ import java.util.Scanner;
  * Definierar ett spelbart dungeonobjekt
  */
 public class Dungeon {
-    private final DragonTreasure dt; //referens för åtkomst till endGame()
     private Room currentRoom; //rummet spelaren befinner sig i
     private String welcomeMessage; //välkomstmeddelande
     private Room[][] map; //spelnivåns layout
     private Player player; //spelaren
-    private boolean gameOver; //avgör om spelet körs
     private int mapX; //koordinatvariabler
     private int mapY;
 
@@ -24,14 +22,14 @@ public class Dungeon {
      * @param welcomeMessage string för välkomstmeddelande
      * @param player ett spelarobjekt
      */
-    public Dungeon(Room [][] map, String welcomeMessage, Player player, DragonTreasure dt)
+    public Dungeon(Room [][] map, String welcomeMessage, Player player)
     {
         this.map = map;
         this.welcomeMessage = welcomeMessage;
         this.player = player;
-        this.dt = dt;
 
         //Hitta startrummet - måste ligga sist pga return, eller om det finns något sätt att avbryta båda loops samtidigt.
+        findStart: //loop label
         for (int i = 0; i < map.length; i++)
         {
             for (int j = 0; j < map[i].length; j++)
@@ -41,7 +39,7 @@ public class Dungeon {
                     this.currentRoom = map[i][j];
                     this.mapX = j;
                     this.mapY = i;
-                    return; //osäker på hur jag bryter båda loops annars
+                    break findStart; //osäker på hur jag bryter båda loops annars
                 }
 
             }
@@ -60,8 +58,9 @@ public class Dungeon {
 
         //välkomna spelaren
         System.out.println(welcomeMessage + ", " + player.getName());
-        System.out.println("You can exit the game at any time by entering \"q\"");
+        System.out.println("You can exit the game to the main menu at any time by entering [q]");
 
+        GameMenu:
         do //menu loop start
         {
             //TODO item check, monster check, player death check(kanske sker i doBattle?)
@@ -97,8 +96,8 @@ public class Dungeon {
                     shouldNarrate = move (user_input); //om rörelse händer returneras true och doNarrative körs för nästa rum
                     break;
                 case 'q': //avslutar programmet
-                    System.out.println("Thank you for playing! Program will exit.");
-                    dt.endGame();
+                    System.out.println("Exiting to main menu.");
+                    break GameMenu;
                 default: //ogiltig input
                     System.out.println("That is not a valid input. Try again.");
                     shouldNarrate = false;

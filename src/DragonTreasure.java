@@ -24,11 +24,38 @@ public class DragonTreasure {
      */
     public static void main(String[] args)
     {
+        Scanner sc = new Scanner(System.in);
         DragonTreasure dragon_treasure = new DragonTreasure();
 
-        Dungeon dungeon = dragon_treasure.setupGame();//Runs the dungeon setup code, stores separately in memory, stores in dungeon and returns the current placement
+        //main menu
+        while(true)
+        {
+            System.out.println(
+                    "\nWelcome to Dragon Treasure\n" +
+                    "Play game [p]\n" +
+                    "Show credits [c]\n" +
+                    "Quit game [q]\n");
+            System.out.print("Enter your choice and press [Enter]: ");
+            switch(sc.nextLine().charAt(0)){
+                case 'p':
+                    Dungeon dungeon = dragon_treasure.setupGame();//Runs the dungeon setup code, stores separately in memory, stores in dungeon and returns the current placement
+                    dungeon.playGame();
+                    break;
+                case 'c':
+                    System.out.println("Made by: Saga Gillback, Linnea Larsson, Ella Ni Chana");
+                    break;
+                case 'q':
+                    System.out.println("Program will exit.");
+                    dragon_treasure.endGame();
+                    break;
+                default:
+                    System.out.println("Not a valid option, please try again");
+                    break;
+            }
+        }
 
-        dungeon.playGame();
+
+
     }//main
 
 
@@ -39,7 +66,6 @@ public class DragonTreasure {
      */
     public Dungeon setupGame()
     {
-        System.out.println("Welcome to Dragon Treasure");
         //local variables
         Scanner input = new Scanner(System.in);//Creates a scanner and pauses the program to wait for user input
         levelLoader loader = new levelLoader(); //skapar en level när den anropas
@@ -54,7 +80,7 @@ public class DragonTreasure {
         Room[][] map = loader.selectLevel(level);
 
 		//return playable dungeon
-        return new Dungeon(map, welcomeMessage, player, this);
+        return new Dungeon(map, welcomeMessage, player);
     }
 
     /**

@@ -1,7 +1,6 @@
 package Rooms;
-import Fighting.*;
 
-public class Monster extends Fighting {
+public class Monster extends Creature {
 	private String attackingName;
 	private String prefix;
 	private String defendingName;

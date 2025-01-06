@@ -1,6 +1,6 @@
 package Player;
 
-import Fighting.Fighting;
+import Rooms.Creature;
 import Items.Item;
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * @Author Saga Gillback, Ella Ni Chana, Philip Larsson
  */
-public class Player extends Fighting {
+public class Player extends Creature {
     private final String name;
     private ArrayList<Item> inventory; //spelaren bör rimligtvis ha en inventory också
 

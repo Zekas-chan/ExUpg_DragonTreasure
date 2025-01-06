@@ -1,11 +1,11 @@
-package Fighting;
+package Rooms;
 
-public class Fighting {
+public class Creature {
     private int health;
     private int damage;
     private int maxHealth;
 
-    public Fighting (int health, int damage)
+    public Creature (int health, int damage)
     {
         this.health = health; this.damage = damage; this.maxHealth = health;
     }//Constructor

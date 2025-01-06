@@ -77,7 +77,7 @@ public class Room {
                 System.out.println("You've slain the creature!");
             }
         }
-        System.out.println("Your remaining health is " + player.getHealth() + ".");//Printf?
+        System.out.printf("Your remaining health is %s.", player.getHealth());//Printf?
         //While monster ==isAlive
         /*Player.Player health, Rooms.Monster health, Player.Player dmg, Rooms.Monster dmg,
         * doBattle loop

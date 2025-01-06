@@ -2,6 +2,9 @@ package Rooms;//We need to import player, it's moved to its own package
 import Player.*;
 import com.sun.source.tree.WhileLoopTree;
 
+import java.time.Duration;
+import java.lang.Thread; //Imports to pause during battle
+
 /**
  * @Author Saga Gillback, Ella Ni Chana, Philip Larsson
  */
@@ -48,6 +51,10 @@ public class Room {
         return doors;
     }
 
+    public Monster getMonster() {
+        return monster;
+    }
+
     /**
      * Skriver ut beskrivningen på rummet samt dess dörrar om det inte är utgången
      */
@@ -62,22 +69,23 @@ public class Room {
         //If there is a monster in the room return true.
     }
 
-    public void doBattle(Player player)
-    {
+    public void doBattle(Player player) throws InterruptedException {
         monster.monsterFlavourText();
         while (monster.isAlive()){
             player.takeDamage(monster.getDamage());//Write out damage
             System.out.printf("%s %s attacks you and does %s damage!\n",monster.getPrefix(), monster.getAttackingName(), monster.getDamage());
+            Thread.sleep(Duration.ofSeconds(1));
             if (!player.isAlive()){
                 return; //Write out that you've died, break the whole game
             }
             monster.takeDamage(player.getDamage());
             System.out.printf("You attack %s and you do %s damage!\n",monster.getDefendingName(), player.getDamage());
+            Thread.sleep(Duration.ofSeconds(1));
             if (!monster.isAlive()){
                 System.out.println("You've slain the creature!");
             }
         }
-        System.out.printf("Your remaining health is %s.", player.getHealth());//Printf?
+        System.out.printf("Your remaining health is %s.", player.getHealth());
         //While monster ==isAlive
         /*Player.Player health, Rooms.Monster health, Player.Player dmg, Rooms.Monster dmg,
         * doBattle loop

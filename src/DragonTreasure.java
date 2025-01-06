@@ -22,8 +22,7 @@ public class DragonTreasure {
      * Startar spelet
      * @param args används ej.
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws InterruptedException { //InterruptedException to wait within doBattle, error handling
         Scanner sc = new Scanner(System.in);
         DragonTreasure dragon_treasure = new DragonTreasure();
 
@@ -36,7 +35,12 @@ public class DragonTreasure {
                     "Show credits [c]\n" +
                     "Quit game [q]\n");
             System.out.print("Enter your choice and press [Enter]: ");
-            switch(sc.nextLine().charAt(0)){
+            String nextline = sc.nextLine();
+            if (nextline.isBlank()) {
+                System.out.println("Not a valid option, please try again");
+                continue;
+            }//Check so the entry isn't null
+            switch(nextline.charAt(0)){
                 case 'p':
                     Dungeon dungeon = dragon_treasure.setupGame();//Runs the dungeon setup code, stores separately in memory, stores in dungeon and returns the current placement
                     dungeon.playGame();
@@ -50,7 +54,7 @@ public class DragonTreasure {
                     break;
                 default:
                     System.out.println("Not a valid option, please try again");
-                    break;
+                    continue;
             }
         }
 

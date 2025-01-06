@@ -49,8 +49,7 @@ public class Dungeon {
     /**
      * Kör spelet genom en loop som frågar efter vad spelaren vill göra
      */
-    public void playGame()
-    {
+    public void playGame() throws InterruptedException {
         //lokala variabler
         Scanner reader = new Scanner(System.in);
         char user_input;
@@ -66,7 +65,7 @@ public class Dungeon {
             //TODO item check, monster check, player death check(kanske sker i doBattle?)
             System.out.println(); //mellanrum för varje handling spelaren tar
 
-            if (currentRoom.monsterPresent()) currentRoom.doBattle(player);
+            if (currentRoom.monsterPresent()&& currentRoom.getMonster().isAlive()) currentRoom.doBattle(player);
             if (!player.isAlive()) {
                 System.out.println("You've died! D:");
                 break;

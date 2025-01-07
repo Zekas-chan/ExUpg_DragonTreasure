@@ -28,7 +28,7 @@ public class Dungeon {
         this.welcomeMessage = welcomeMessage;
         this.player = player;
 
-        //Hitta startrummet - måste ligga sist pga return, eller om det finns något sätt att avbryta båda loops samtidigt.
+        //Hitta startrummet
         findStart: //loop label
         for (int i = 0; i < map.length; i++)
         {
@@ -39,7 +39,7 @@ public class Dungeon {
                     this.currentRoom = map[i][j];
                     this.mapX = j;
                     this.mapY = i;
-                    break findStart; //osäker på hur jag bryter båda loops annars
+                    break findStart;
                 }
 
             }
@@ -62,7 +62,7 @@ public class Dungeon {
         GameMenu:
         do //menu loop start
         {
-            //TODO item check, monster check, player death check(kanske sker i doBattle?)
+            //TODO item check
             System.out.println(); //mellanrum för varje handling spelaren tar
 
             if (currentRoom.monsterPresent()&& currentRoom.getMonster().isAlive()) currentRoom.doBattle(player);
@@ -70,18 +70,22 @@ public class Dungeon {
                 System.out.println("You've died! D:");
                 break;
             }
-            //om det finns monster sker en strid
-            //if (currentRoom.monsterPresent) currentRoom.doBattle();
 
-            //beskriv rummet och eventuella invånare
+            //beskriv rummet
             if(shouldNarrate) currentRoom.doNarrative();
 
             //om det finns items ska deras beskrivning och ledtråd för att plocka upp visas
             //if (currentRoom.hasItem) System.out.println("You see" + currentRoom.getItem.getItemDescription + ". You can pick it up [p]")
 
             System.out.print("What will you do?: ");
-            user_input = Character.toLowerCase(reader.nextLine().charAt(0));//converts the user input into a char and takes the first letter, to compare
-            //FIXME kastar IndexOutOfBoundsException om spelaren inte ger någon input
+
+            try
+            {
+                user_input = Character.toLowerCase(reader.nextLine().charAt(0));//converts the user input into a char and takes the first letter, to compare
+            } catch (StringIndexOutOfBoundsException e) //om input är tom
+            {
+                user_input = 'x'; //går till default case
+            }
             switch (user_input)
             {
                 case 'p': //för att plocka upp items
@@ -97,6 +101,7 @@ public class Dungeon {
                 case 'q': //avslutar programmet
                     System.out.println("Exiting to main menu.");
                     break GameMenu;
+                case 'x': //om user_input är tom, för att nå default
                 default: //ogiltig input
                     System.out.println("That is not a valid input. Try again.");
                     shouldNarrate = false;

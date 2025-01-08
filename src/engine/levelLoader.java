@@ -23,13 +23,13 @@ public class levelLoader{
 	}
 
 	/**
-	 * Testlevel
+	 * Testlevel, endast för testsyfte för oss, men roligt att ha!
 	 * @return En enklare level som bara går rakt i en riktning.
 	 */
 	private Room[][] test()
 	{
 		Door[] door_start = {new Door('w', false)};
-		Room start = new StartRoom("Right start", door_start);
+		Room start = new StartRoom("Right start, w", door_start);
 
 		Door[] test1_door =
 				{
@@ -59,7 +59,7 @@ public class levelLoader{
 
 		return new Room[][]{{exit, fight, test1, start}};
 
-	};
+	}
 
 	/**
 	 * Level 1, från klassdiagrammet.
@@ -87,7 +87,7 @@ public class levelLoader{
 						new Door('s', false),
 						new Door('e', false)
 				};
-		Item lootWeapon = new Weapon("sword", "very sharp", 3, "bladed");
+		Item lootWeapon = new Weapon("sword", "very sharp", 3, "bladed"); //Skapar item och möjligt monster, läggs in i rummet
 		Room dead = new Room("You see a dead person in the corner.", door_dead, lootWeapon);
 
 		Door[] door_monster =
@@ -96,7 +96,8 @@ public class levelLoader{
 						new Door('e', true),
 						new Door('s', false)
 				};
-		Room monster = new Room("You smell a musky smell.", door_monster,new Monster("monster", "A", "the monster",10,1));
+		Monster fightMonster = new Monster("monster", "A", "the monster",10,1);
+		Room monster = new Room("You smell a musky smell.", door_monster, fightMonster);
 
 		Door[] door_potion =
 				{
@@ -113,12 +114,12 @@ public class levelLoader{
 						new Door('e', false)
 				};
 		Item lootKey = new Key("a key", "key");
-		Room key = new Room("You hear water nearby.", door_key, lootKey);
+		Room key = new Room("You hear water rushing nearby.", door_key, lootKey);
 
 		Door[] door_treasure = {new Door('w', false)};
 		Item lootTreasure = new Treasure("chest of wonders", "filled with delights", 4);
 		Monster dragon = new Monster("dragon", "A", "the dragon", printDragon(), 18,1);
-		Room treasure = new Room("Wow, TREASURE!", door_treasure, dragon, lootTreasure);
+		Room treasure = new Room("Wow, TREASURE!", door_treasure, dragon, lootTreasure); //Syns bättre, item och monster skapas och läggs in i rummet.
 
 		Door[] door_exit = {new Door('w', false)};
 		ExitRoom exit = new ExitRoom("Congratulations, you made it!", door_exit);
@@ -130,7 +131,7 @@ public class levelLoader{
 					{null, key, potion, treasure}, //array [2][n]
 				};
 	}
-	private String printDragon()
+	private String printDragon() //Funktionen för att skriva ut drakens acsii art
 	{
 		return
 				"                                                  .~))>>\n" +

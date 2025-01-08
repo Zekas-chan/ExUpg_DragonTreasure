@@ -64,12 +64,11 @@ public class Dungeon {
         GameMenu:
         do //menu loop start
         {
-            //TODO item check
             System.out.println(); //mellanrum för varje handling spelaren tar
 
-            if (currentRoom.monsterPresent()&& currentRoom.getMonster().isAlive()) currentRoom.doBattle(player);
-            if (!player.isAlive()) {
-                System.out.println("You've died! D:");
+            if (currentRoom.monsterPresent()&& currentRoom.getMonster().isAlive()) currentRoom.doBattle(player);//Kollar om rummet har ett monster samt om det är vid liv. Spelaren skickas då in i doBattle loopen
+            if (!player.isAlive()) { //Om spelaren failar sin isAlive check = är stendöd, kommer main menyn visas igen
+                System.out.println("You've died! D: You will be sent back to the main menu.");
                 break;
             }
 
@@ -103,7 +102,7 @@ public class Dungeon {
                     {
                         shouldNarrate = false;
                         System.out.println("You pick up the " + currentRoom.getLootName());
-                        player.pickUpItem(currentRoom.getLoot());
+                        player.pickUpItem(currentRoom.getLoot());//Spelare plockar upp item och skriver ut the key hints
                     }else
                     {
                         System.out.println("There is nothing to pick up.");
@@ -255,46 +254,5 @@ public class Dungeon {
                         "      |'-._   || |'|_.-'_.-'\n" +
                         "      '-._'-.|| |' `_.-'\n" +
                         "           '-.||_/.-'\n");
-    }
-
-    /**
-     * Skriver ut en drake
-     */
-    private void printDragon()
-    {
-        System.out.println(
-                "                                                  .~))>>\n" +
-                        "                                                 .~)>>\n" +
-                        "                                               .~))))>>>\n" +
-                        "                                             .~))>>             ___\n" +
-                        "                                           .~))>>)))>>      .-~))>>\n" +
-                        "                                         .~)))))>>       .-~))>>)>\n" +
-                        "                                       .~)))>>))))>>  .-~)>>)>\n" +
-                        "                   )                 .~))>>))))>>  .-~)))))>>)>\n" +
-                        "                ( )@@*)             //)>))))))  .-~))))>>)>\n" +
-                        "              ).@(@@               //))>>))) .-~))>>)))))>>)>\n" +
-                        "            (( @.@).              //))))) .-~)>>)))))>>)>\n" +
-                        "          ))  )@@*.@@ )          //)>))) //))))))>>))))>>)>\n" +
-                        "       ((  ((@@@.@@             |/))))) //)))))>>)))>>)>\n" +
-                        "      )) @@*. )@@ )   (\\_(\\-\\b  |))>)) //)))>>)))))))>>)>\n" +
-                        "    (( @@@(.@(@ .    _/`-`  ~|b |>))) //)>>)))))))>>)>\n" +
-                        "     )* @@@ )@*     (@)  (@) /\\b|))) //))))))>>))))>>\n" +
-                        "   (( @. )@( @ .   _/  /    /  \\b)) //))>>)))))>>>_._\n" +
-                        "    )@@ (@@*)@@.  (6///6)- / ^  \\b)//))))))>>)))>>   ~~-.\n" +
-                        " ( @jgs@@. @@@.*@_ VvvvvV//  ^  \\b/)>>))))>>      _.     `bb\n" +
-                        " ((@@ @@@*.(@@ . - | o |' \\ (  ^   \\b)))>>        .'       b`,\n" +
-                        "   ((@@).*@@ )@ )   \\^^^/  ((   ^  ~)_        \\  /           b `,\n" +
-                        "     (@@. (@@ ).     `-'   (((   ^    `\\ \\ \\ \\ \\|             b  `.\n" +
-                        "       (*.@*              / ((((        \\| | |  \\       .       b `.\n" +
-                        "                         / / (((((  \\    \\ /  _.-~\\     Y,      b  ;\n" +
-                        "                        / / / (((((( \\    \\.-~   _.`\" _.-~`,    b  ;\n" +
-                        "                       /   /   `(((((()    )    (((((~      `,  b  ;\n" +
-                        "                     _/  _/      `\"\"\"/   /'                  ; b   ;\n" +
-                        "                 _.-~_.-~           /  /'                _.'~bb _.'\n" +
-                        "               ((((~~              / /'              _.'~bb.--~\n" +
-                        "                                  ((((          __.-~bb.-~\n" +
-                        "                                              .'  b .~~\n" +
-                        "                                              :bb ,' \n" +
-                        "                                              ~~~~\n");
     }
 }

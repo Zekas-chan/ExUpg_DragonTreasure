@@ -5,14 +5,14 @@ package Items;
 
 public abstract class Item {
     private String itemName;
-    private String description;
+    private String description; //can be used to describe the appearance of the item
    
 
     public Item(String name, String description) {
         this.itemName = name;
         this.description = description;
         
-    }
+    } //constructor items
 
     public String getName() {
         return itemName;
@@ -25,10 +25,10 @@ public abstract class Item {
   
 
  
-    public abstract void use();
+    public abstract void use(); //implemented in subclasses
 
     @Override
     public String toString() {
         return "Item: " + itemName + "\nDescription: " + description;
-    }
+    } //enables information about the items to be viewed
 }

@@ -1,23 +1,17 @@
 public class Key extends Item {
-    private String keyType;
 
-    public Key(String name, String description, String keyType) {
+
+    public Key(String name, String description) {
         super(name, description);
-        this.keyType = keyType;
+       
     }
 
-    public String getKeyType() {
-        return keyType;
-    }
 
     @Override
     public void use() {
         
-        System.out.println("You use the " + getName() + " to unlock a " + keyType + ".");
+        System.out.println("You use the " + getName() + " to unlock the door.");
     }
 
-    @Override
-    public String toString() {
-        return super.toString() + "\nKey Type: " + keyType;
-    }
+  
 }

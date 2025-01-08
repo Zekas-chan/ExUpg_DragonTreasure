@@ -27,6 +27,11 @@ public class Door {
         return locked;
     }
 
+    public void unlockDoor()
+    {
+        this.locked = false;
+    }
+
     /**
      * Get-metod för orientation
      * @return Dörrens "position" som en char

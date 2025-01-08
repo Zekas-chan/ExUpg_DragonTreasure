@@ -1,4 +1,4 @@
-import Player.Player;
+import Creatures.Player;
 import Rooms.*;
 
 import java.util.Scanner;

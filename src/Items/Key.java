@@ -1,3 +1,5 @@
+package Items;
+
 public class Key extends Item {
 
 
@@ -8,8 +10,8 @@ public class Key extends Item {
 
 
     @Override
-    public void use() {
-        
+    public void use()
+    {
         System.out.println("You use the " + getName() + " to unlock the door.");
     }
 

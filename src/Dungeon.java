@@ -1,4 +1,4 @@
-import Player.Player;
+import Creatures.Player;
 import Rooms.*;
 
 import java.util.Scanner;
@@ -74,8 +74,16 @@ public class Dungeon {
             //beskriv rummet
             if(shouldNarrate) currentRoom.doNarrative();
 
-            //om det finns items ska deras beskrivning och ledtråd för att plocka upp visas
-            //if (currentRoom.hasItem) System.out.println("You see" + currentRoom.getItem.getItemDescription + ". You can pick it up [p]")
+            //key hints - om spelaren har items som kan användas
+            if(player.hasPotion())
+            {
+                System.out.println("To use a potion, press [h]");
+            }
+
+            if(player.hasKey())
+            {
+                System.out.println("To use the key, press [u]");
+            }
 
             System.out.print("What will you do?: ");
 
@@ -89,8 +97,30 @@ public class Dungeon {
             switch (user_input)
             {
                 case 'p': //för att plocka upp items
-                    //TODO implementation
-                    shouldNarrate = false;
+                    if(currentRoom.hasLoot())
+                    {
+                        shouldNarrate = false;
+                        System.out.println("You pick up the " + currentRoom.getLootName());
+                        player.pickUpItem(currentRoom.getLoot());
+                    }else
+                    {
+                        System.out.println("There is nothing to pick up.");
+                    }
+                    break;
+                case 'h':
+                    player.usePotion();
+                    break;
+                case 'u':
+                    if(player.hasKey())
+                    {
+                        for(Door door : currentRoom.getDoors())
+                        {
+                            if(door.isLocked())
+                            {
+                                door.unlockDoor();
+                            }
+                        }
+                    }
                     break;
                 case 'n': //alla leder till movement
                 case 'w':
@@ -112,14 +142,17 @@ public class Dungeon {
 
     /**
      * Kontrollerar om spelaren är i utgången och avslutar spelet.
-     * TODO olika prints beroende på om spelaren har skatt med sig eller inte.
      * @return true eller false, beroende på om spelaren är i ett ExitRoom.
      */
     private boolean hasWon(){
-        if(currentRoom instanceof ExitRoom)
+        if(currentRoom instanceof ExitRoom && player.hasTreasure())
         { //spelaren kan bara vinna i slutrummet
             printTreasure();
             System.out.println("You leave the cave with the treasure and your life. Congratulations, you won!");
+            return true;
+        }else if (currentRoom instanceof ExitRoom)
+        {
+            System.out.println("You found the exit. But did you forget something?");
             return true;
         }
         return false;

@@ -1,3 +1,5 @@
+import Creatures.Monster;
+import Items.*;
 import Rooms.*;
 
 /**
@@ -26,33 +28,34 @@ public class levelLoader{
 	{
 		Door[] door_start = {new Door('w', false)};
 		Room start = new StartRoom("Right start", door_start);
-		Room start2 = new StartRoom("Wrong start", door_start);
 
 		Door[] test1_door =
 				{
 					new Door('w', false),
 					new Door('e', false)
 				};
-		Room test1 = new Room("Test room 1", test1_door,new Monster("monster", "A", "the monster", printDragon(), 2, 1));
+		Monster testMonster = new Monster("monster", "A", "the monster", printDragon(), 6, 1);
 
-		Door[] test2_door =
+		Weapon weapon  = new Weapon("SWORD","sworder", 3, "swordest");
+
+		Potion testPot = new Potion("potion", "heals you", 5);
+
+		Treasure testSwag = new Treasure("chest of treasure", "much coin", 3 );
+
+		Key testKey = new Key("A key", "key");
+		Room test1 = new Room("WHERE POTION", test1_door, testSwag);
+
+		Door[] fight_door =
 				{
 						new Door('w', false),
 						new Door('e', false)
 				};
-		Room test2 = new Room("Test room 2", test2_door);
-
-		Door[] test3_door =
-				{
-						new Door('w', false),
-						new Door('e', false)
-				};
-		Room test3 = new Room("Test room 3", test3_door);
+		Room fight = new Room ("Fight time", fight_door);
 
 		Door[] door_exit = {new Door('e', false)};
 		Room exit = new ExitRoom("Test room exit", door_exit);
 
-		return new Room[][]{{exit, test1, start, test2, test3, start2}};
+		return new Room[][]{{exit, fight, test1, start}};
 
 	};
 
@@ -82,12 +85,13 @@ public class levelLoader{
 						new Door('s', false),
 						new Door('e', false)
 				};
-		Room dead = new Room("You see a dead person in the corner.", door_dead);
+		Item lootWeapon = new Weapon("sword", "very sharp", 3, "bladed");
+		Room dead = new Room("You see a dead person in the corner.", door_dead, lootWeapon);
 
 		Door[] door_monster =
 				{
 						new Door('w', false),
-						new Door('e', false),
+						new Door('e', true),
 						new Door('s', false)
 				};
 		Room monster = new Room("You smell a musky smell.", door_monster,new Monster("monster", "A", "the monster",10,1));
@@ -96,19 +100,23 @@ public class levelLoader{
 				{
 						new Door('n', false),
 						new Door('w', false),
-						new Door('e', false)
+						new Door('e', true)
 				};
-		Room potion = new Room("You hear a low growling.", door_potion);
+		Item lootPotion = new Potion("health potion", "a red flask", 5);
+		Room potion = new Room("You hear a low growling.", door_potion, lootPotion);
 
 		Door[] door_key =
 				{
 						new Door('n', false),
 						new Door('e', false)
 				};
-		Room key = new Room("You hear water nearby.", door_key);
+		Item lootKey = new Key("a key", "key");
+		Room key = new Room("You hear water nearby.", door_key, lootKey);
 
 		Door[] door_treasure = {new Door('w', false)};
-		Room treasure = new Room("Wow, TREASURE!", door_treasure, new Monster("dragon", "A", "the dragon", printDragon(), 10,1));
+		Item lootTreasure = new Treasure("chest of wonders", "filled with delights", 4);
+		Monster dragon = new Monster("dragon", "A", "the dragon", printDragon(), 18,1);
+		Room treasure = new Room("Wow, TREASURE!", door_treasure, dragon, lootTreasure);
 
 		Door[] door_exit = {new Door('w', false)};
 		ExitRoom exit = new ExitRoom("Congratulations, you made it!", door_exit);

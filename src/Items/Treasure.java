@@ -1,9 +1,11 @@
+package Items;
+
 public class Treasure extends Item {
     private int goldValue;
 
     public Treasure(String name, String description, int value) {
         super(name, description);
-        this.goldValue = goldValue;
+        this.goldValue = value;
     }
 
     public int getgoldValue() {

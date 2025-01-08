@@ -21,11 +21,11 @@ public class Weapon extends Item {
     @Override
     public void use() {
        
-        System.out.println("You wield the " + getName() + " and can now deal " + increaseDamage + " damage.");
+        System.out.println("You wield the " + getName() + " and can now deal " + increaseDamage + " more damage.");
     }
 
     @Override
     public String toString() {
-        return super.toString() + "\nDamage: " + increaeDamage + "\nWeapon Type: " + weaponType;
+        return super.toString() + "\nDamage: " + increaseDamage + "\nWeapon Type: " + weaponType;
     }
 }

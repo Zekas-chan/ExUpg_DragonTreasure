@@ -3,10 +3,7 @@ package Rooms;
 public class ExitRoom extends Room{
 
 	/**
-	 * Konstruerar ett nytt Exitroom
-	 * @param description Textbeskrivning av rummet, typ "Det är dammigt och luktar gympaskor"
-	 * @param doors En array där varje element är en dörr
-	 * @throws IllegalArgumentException om det är för många eller få dörrar i arrayen
+	 * Konstruerar ett nytt Exitroom, identisk till konstruktor #1
 	 */
 	public ExitRoom(String description, Door[] doors) throws IllegalArgumentException
 	{
@@ -14,7 +11,7 @@ public class ExitRoom extends Room{
 	}
 
 	/**
-	 * Skriver inte ut en beskrivning av dörrarna, annars identisk
+	 * Skriver inte ut en beskrivning av dörrarna, annars identisk till Room
 	 */
 	@Override
 	public void doNarrative()

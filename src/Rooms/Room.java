@@ -5,6 +5,7 @@ import Creatures.*;
 import java.lang.Thread; //Imports to pause during battle
 
 /**
+ * Representerar ett rum
  * @Author Saga Gillback, Ella Ni Chana, Philip Larsson
  */
 public class Room {
@@ -60,37 +61,29 @@ public class Room {
         this.loot = loot;
     }
 
-    public Room(String description, Door[] doors, Item loot) throws IllegalArgumentException
-    {
-        if (doors.length > 4 || doors.length < 1)
-        {
-            throw new IllegalArgumentException("Invalid amount of doors!");
-        }
-        this.roomDescription = description;
-        this.doors = doors;
-        this.loot = loot;
-    }
 
-    public Room(String description, Door[] doors) throws IllegalArgumentException {
-        if (doors.length > 4 || doors.length < 1) {
-            throw new IllegalArgumentException("Invalid amount of doors!");
-        }
-        this.roomDescription = description;
-        this.doors = doors;
-        this.monster = null;
-    }
-    //getters
+    /**
+     * Visar rummets beskrivning
+     * @return beskrivningen som String
+     */
     public String getRoomDescription()
     {
         return roomDescription;
     }
 
-    //getter för dörrarrayen
+    /**
+     * Returnerar rummets dörrarray
+     * @return Dörrarrayen
+     */
     public Door[] getDoors()
     {
         return doors;
     }
 
+    /**
+     * Åtkomst till rummets monsterobjekt
+     * @return Monsterobjektet
+     */
     public Monster getMonster() {
         return monster;
     }
@@ -105,6 +98,10 @@ public class Room {
         listDoors(); //dörrarna i rummet
     }
 
+    /**
+     * När item hämtas från ett rum blir variabeln för rummet null
+     * @return det item som plockas upp
+     */
     public Item getLoot()
     {
         Item temp = this.loot;
@@ -112,23 +109,49 @@ public class Room {
         return temp;
     }
 
+    /**
+     * När ett items namn ska visas utan att det plockas upp används denna metod
+     * @return Objektets namn som String
+     */
     public String getLootName()
     {
         return this.loot.getName();
     }
 
+    /**
+     * Visar huruvida rummet har loot
+     * @return boolean beroende på existens
+     */
     public boolean hasLoot(){
         return this.loot != null;
     }
 
+    /**
+     * Visar huruvida rummet har monster
+     * @return boolean beroende på existens
+     */
     public boolean monsterPresent(){
         return monster != null;
         //If there is a monster in the room return true.
     }
 
+    /**
+     * Hanterar strider.
+     *         //While monster ==isAlive
+     *         /*Player.Player health, Player.Monster health, Player.Player dmg, Player.Monster dmg,
+     *         * doBattle loop
+     *         * Player.Monster dmg
+     *         * Player.Player.isAlive check (If player is dead, break and exit game)
+     *         * Player.Player dmg
+     *         * Player.Monster.isAlive check (When monster dies, isAlive = false)
+     *         You defeated the monster!
+     *         "Your remaining health is " Player.Player.getHealth + "."
+     * @param player
+     * @throws InterruptedException
+     */
     public void doBattle(Player player) throws InterruptedException {
         monster.monsterFlavourText();
-        int battleInterval = 400;
+        int battleInterval = 400; //fördröjning mellan utskrifter i millisekunder
         while (monster.isAlive()){
             player.takeDamage(monster.getDamage());//Write out damage
             System.out.printf("%s %s attacks you and does %s damage!\n",monster.getPrefix(), monster.getAttackingName(), monster.getDamage());
@@ -144,15 +167,6 @@ public class Room {
             }
         }
         System.out.printf("Your remaining health is %s.", player.getHealth());
-        //While monster ==isAlive
-        /*Player.Player health, Player.Monster health, Player.Player dmg, Player.Monster dmg,
-        * doBattle loop
-        * Player.Monster dmg
-        * Player.Player.isAlive check (If player is dead, break and exit game)
-        * Player.Player dmg
-        * Player.Monster.isAlive check (When monster dies, isAlive = false)*/
-        //You defeated the monster!
-        //"Your remaining health is " Player.Player.getHealth + "."
     }
 
     /**

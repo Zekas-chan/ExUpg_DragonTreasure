@@ -2,6 +2,9 @@ package Rooms;
 
 public class StartRoom extends Room{
 
+	/**
+	 * Identisk till Room konstruktor #1
+	 */
 	public StartRoom(String description, Door[] doors) throws IllegalArgumentException
 	{
 		super(description, doors);

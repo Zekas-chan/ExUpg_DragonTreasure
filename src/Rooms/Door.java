@@ -1,6 +1,7 @@
 package Rooms;
 
 /**
+ * Representerar en dörr
  * @Author Saga Gillback, Ella Ni Chana, Philip Larsson
  */
 public class Door {
@@ -27,6 +28,9 @@ public class Door {
         return locked;
     }
 
+    /**
+     * Låser upp dörren
+     */
     public void unlockDoor()
     {
         this.locked = false;
@@ -42,21 +46,20 @@ public class Door {
     }
 
     /**
-     * Dörrens riktning som ord i stället för char
-     * TODO behöver ändras när nycklar är implementerade med all sannolikhet
+     * Dörrens riktning som ord istället för char med tangenthint.
      * @return Dörrens riktning utskriven
      */
     public String getMovementHint()
     {
-        String showLock = locked ? "[locked]" : "";
+        String showLock = locked ? " [locked]" : "";
         switch(orientation)
         {
-            case 'n': return "north [n] " + showLock;
-            case 'e': return "east [e] " + showLock;
-            case 's': return "south [s] " + showLock;
-            case 'w': return "west [w] " + showLock;
+            case 'n': return "north [n]" + showLock;
+            case 'e': return "east [e]" + showLock;
+            case 's': return "south [s]" + showLock;
+            case 'w': return "west [w]" + showLock;
             default:
-                return "This should never display";
+                return "Door.java - This should never display"; //:prayinghands:
         }
     }
 }

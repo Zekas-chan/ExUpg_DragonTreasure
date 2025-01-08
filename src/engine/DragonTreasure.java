@@ -2,7 +2,6 @@ package engine;
 
 import Creatures.Player;
 import Rooms.*;
-
 import java.util.Scanner;
 
 /**
@@ -48,23 +47,18 @@ public class DragonTreasure {
                     dungeon.playGame();
                     break;
                 case 'c':
-                    System.out.println("Made by: Saga Gillback, Linnea Larsson, Ella Ni Chana");
+                    System.out.println("Made by: Saga Gillback, Linnea Larsson, Ella Ni Chana.");
                     break;
                 case 'q':
                     System.out.println("Program will exit.");
                     dragon_treasure.endGame();
                     break;
                 default:
-                    System.out.println("Not a valid option, please try again");
-                    continue;
+                    System.out.println("Not a valid option, please try again.");
+                    continue; //egentligen onödig men utifall att
             }
         }
-
-
-
     }//main
-
-
 
     /**
      * Skapar spelets dörrar och rum och gör dessa till en map samt skapar spelaren
@@ -90,8 +84,7 @@ public class DragonTreasure {
     }
 
     /**
-     * Avslutar spelet.
-     * TODO implementera i del 2
+     * Avslutar programmet.
      */
     public void endGame()
     {

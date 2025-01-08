@@ -57,7 +57,7 @@ public class Player extends Creature {
     @Override
     public int getDamage()
     {
-        return super.getDamage() + weapon.getDamage();
+        return super.getDamage() + (weapon != null ? weapon.getDamage() : 0);
     }
 
     public void usePotion()

@@ -10,10 +10,8 @@ public class Creature {
         this.health = health; this.damage = damage; this.maxHealth = health;
     }//Constructor
 
-    //Getter and adder for damage
+    //Getter for damage and health
     public int getDamage(){return damage;}
-    public void addDamage(int damage){this.damage += damage;}
-    //vi kan också använda modifiers men this will do for now, modifier class, sword extends, potion extends
 
     public int getHealth(){
         return health;

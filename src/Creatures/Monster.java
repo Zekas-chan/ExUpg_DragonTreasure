@@ -1,4 +1,4 @@
-package Rooms;
+package Creatures;
 
 public class Monster extends Creature {
 	private String attackingName;

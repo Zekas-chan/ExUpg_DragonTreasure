@@ -1,4 +1,4 @@
-package Rooms;
+package Creatures;
 
 public class Creature {
     private int health;

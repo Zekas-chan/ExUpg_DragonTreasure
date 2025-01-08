@@ -20,9 +20,8 @@ public class Weapon extends Item {
 
     @Override
     public void use() {
-       //Method that defines the effect of using the weapon
         System.out.println("You wield the " + getName() + " and can now deal " + increaseDamage + " more damage.");
-    }
+    }  //Method that defines the effect of using the weapon
 
     @Override
     public String toString() {

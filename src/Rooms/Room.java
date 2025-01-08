@@ -1,4 +1,5 @@
-package Rooms;//We need to import player, it's moved to its own package
+package Rooms;
+
 import Items.*;
 import Creatures.*;
 import java.lang.Thread; //Imports to pause during battle
@@ -13,31 +14,48 @@ public class Room {
     private Item loot;
 
     /**
-     * Konstruerar ett nytt rum
-     *
+     * Konstruktor #1 - vanligt rum
      * @param description Textbeskrivning av rummet, typ "Det är dammigt och luktar gympaskor"
-     * @param doors       En array där varje element är en dörr
+     * @param doors En array där varje element är en dörr
      * @throws IllegalArgumentException om det är för många eller få dörrar i arrayen
      */
-    public Room(String description, Door[] doors, Monster monster) throws IllegalArgumentException
-    {
-        if (doors.length > 4 || doors.length < 1)
-        {
+    public Room(String description, Door[] doors) throws IllegalArgumentException {
+        if (doors.length > 4 || doors.length < 1) {
             throw new IllegalArgumentException("Invalid amount of doors!");
         }
         this.roomDescription = description;
         this.doors = doors;
+        this.monster = null;
+    }
+
+    /**
+     * Konstruktor #2 - Rum med monster
+     * Konstruerar ett rum med fientlig invånare
+     * @param monster Monstret som rummet ska ha
+     */
+    public Room(String description, Door[] doors, Monster monster)
+    {
+        this(description, doors);
         this.monster = monster;
     }
 
-    public Room(String description, Door[] doors, Monster monster, Item loot) throws IllegalArgumentException
+    /**
+     * Konstruktor #3 - Rum med loot
+     * Konstruerar ett rum med loot som spelaren kan plocka upp
+     * @param loot Det item som går att plocka upp i rummet
+     */
+    public Room(String description, Door[] doors, Item loot)
     {
-        if (doors.length > 4 || doors.length < 1)
-        {
-            throw new IllegalArgumentException("Invalid amount of doors!");
-        }
-        this.roomDescription = description;
-        this.doors = doors;
+        this(description, doors);
+        this.loot = loot;
+    }
+
+    /**
+     * Konstruktor #4 - Rum med både monster och loot
+     */
+    public Room(String description, Door[] doors, Monster monster, Item loot)
+    {
+        this(description, doors);
         this.monster = monster;
         this.loot = loot;
     }

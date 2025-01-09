@@ -51,13 +51,13 @@ public class Door {
      */
     public String getMovementHint()
     {
-        String showLock = locked ? " [locked]" : "";
+        String showLock = locked ? " [locked]" : " ["+orientation+"]";
         switch(orientation)
         {
-            case 'n': return "north [n]" + showLock;
-            case 'e': return "east [e]" + showLock;
-            case 's': return "south [s]" + showLock;
-            case 'w': return "west [w]" + showLock;
+            case 'n': return "north" + showLock;
+            case 'e': return "east" + showLock;
+            case 's': return "south" + showLock;
+            case 'w': return "west" + showLock;
             default:
                 return "Door.java - This should never display"; //:prayinghands:
         }

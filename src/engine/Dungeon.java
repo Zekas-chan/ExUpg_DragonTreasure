@@ -56,6 +56,7 @@ public class Dungeon {
         Scanner reader = new Scanner(System.in);
         char user_input;
         boolean shouldNarrate = true;
+        boolean usedKey = false; //Skriver ut dörrar utan narration om spelaren använde nyckeln
 
         //välkomna spelaren
         System.out.println(welcomeMessage + ", " + player.getName());
@@ -72,8 +73,15 @@ public class Dungeon {
                 break;
             }
 
-            //beskriv rummet
+            //beskriv rummet på något sätt
             if(shouldNarrate) currentRoom.doNarrative();
+
+            if(usedKey)
+            {
+                currentRoom.listDoors();
+                usedKey = false;
+            }
+
 
             //key hints - om spelaren har items som kan användas
             if(player.hasPotion() && player.isHurt())
@@ -101,8 +109,8 @@ public class Dungeon {
                     if(currentRoom.hasLoot())
                     {
                         shouldNarrate = false;
-                        System.out.println("You pick up the " + currentRoom.getLootName());
-                        player.pickUpItem(currentRoom.getLoot());//Spelare plockar upp item och skriver ut the key hints
+                        System.out.println("You pick up the " + currentRoom.getLootName() + ".");
+                        player.pickUpItem(currentRoom.pickUpLoot());//Spelare plockar upp item och skriver ut the key hints
                     }else
                     {
                         System.out.println("There is nothing to pick up.");
@@ -110,9 +118,10 @@ public class Dungeon {
                     break;
                 case 'h':
                     player.usePotion();
+                    shouldNarrate = false;
                     break;
                 case 'u':
-                    if(player.hasKey())
+                    if(player.hasKey() && currentRoom.hasLockedDoors())
                     {
                         for(Door door : currentRoom.getDoors())
                         {
@@ -121,6 +130,12 @@ public class Dungeon {
                                 door.unlockDoor();
                             }
                         }
+                        shouldNarrate = false;
+                        usedKey = true;
+                    }
+                    else
+                    {
+                        System.out.println("There is no locked door in this room.");
                     }
                     break;
                 case 'n': //alla leder till movement
@@ -145,7 +160,8 @@ public class Dungeon {
      * Kontrollerar om spelaren är i utgången och avslutar spelet.
      * @return true eller false, beroende på om spelaren är i ett ExitRoom.
      */
-    private boolean hasWon(){
+    private boolean hasWon()
+    {
         if(currentRoom instanceof ExitRoom && player.hasTreasure())
         { //spelaren kan bara vinna i slutrummet
             printTreasure();

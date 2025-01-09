@@ -68,10 +68,10 @@ public class DragonTreasure {
     {
         //local variables
         Scanner input = new Scanner(System.in);//Creates a scanner and pauses the program to wait for user input
-        levelLoader loader = new levelLoader(); //skapar en level när den anropas
+        LevelLoader loader = new LevelLoader(); //skapar en level när den anropas
 
         //create player
-        System.out.println("Name your hero: ");
+        System.out.print("Name your hero: ");
         Player player = new Player(input.nextLine());//Assigns "player" the name that was input
 
         //select level - mest för debugsyfte, ken ersättas med att hårdkoda level 1 vid inlämning

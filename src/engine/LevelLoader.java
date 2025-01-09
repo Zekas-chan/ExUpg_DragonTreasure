@@ -80,14 +80,14 @@ public class LevelLoader {
 						new Door('n', false),
 						new Door('s', false)
 				};
-		Room torch = new Room("The door to the west has collapsed. You see a torch on the wall.", door_torch);
+		Room torch = new Room("The door to the west has collapsed behind you. You see a torch on the wall.", door_torch);
 
 		Door[] door_dead =
 				{
 						new Door('s', false),
 						new Door('e', false)
 				};
-		Item lootWeapon = new Weapon("sword", "very sharp", 3, "bladed"); //Skapar item och möjligt monster, läggs in i rummet
+		Item lootWeapon = new Weapon("sword", "", 3, ""); //Skapar item och möjligt monster, läggs in i rummet
 		Room dead = new Room("You see a dead person in the corner.", door_dead, lootWeapon);
 
 		Door[] door_monster =
@@ -105,7 +105,7 @@ public class LevelLoader {
 						new Door('w', false),
 						new Door('e', true)
 				};
-		Item lootPotion = new Potion("health potion", "a red flask", 5);
+		Item lootPotion = new Potion("health potion", "", 4);
 		Room potion = new Room("You hear a low growling.", door_potion, lootPotion);
 
 		Door[] door_key =
@@ -113,7 +113,7 @@ public class LevelLoader {
 						new Door('n', false),
 						new Door('e', false)
 				};
-		Item lootKey = new Key("a key", "key");
+		Item lootKey = new Key("key", "");
 		Room key = new Room("You hear water rushing nearby.", door_key, lootKey);
 
 		Door[] door_treasure = {new Door('w', false)};

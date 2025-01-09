@@ -22,9 +22,6 @@ public abstract class Item {
         return description;
     }
 
-  
-
- 
     public abstract void use(); //implemented in subclasses
 
     @Override

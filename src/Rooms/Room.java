@@ -94,7 +94,7 @@ public class Room {
     public void doNarrative()
     {
         System.out.println(roomDescription); //rummets beskrivning
-        if (hasLoot()) System.out.println("You see " + getLootName() + ". You can pick it up [p]");
+        if (hasLoot()) System.out.println("You see a " + getLootName() + ". You can pick it up [p]");
         listDoors(); //dörrarna i rummet
     }
 
@@ -102,11 +102,16 @@ public class Room {
      * När item hämtas från ett rum blir variabeln för rummet null
      * @return det item som plockas upp
      */
-    public Item getLoot()
+    public Item pickUpLoot()
     {
         Item temp = this.loot;
         this.loot = null;
         return temp;
+    }
+
+    public Item getLoot()
+    {
+        return this.loot;
     }
 
     /**
@@ -179,13 +184,13 @@ public class Room {
                 System.out.println("You've slain the creature!");
             }
         }
-        System.out.printf("Your remaining health is %s.", player.getHealth());
+        System.out.printf("Your remaining health is %s.%n", player.getHealth());
     }
 
     /**
      * Skriver ut en beskrivning av dörrarna i rummet.
      */
-    private void listDoors()
+    public void listDoors()
     {
         if (doors.length == 1)
         {

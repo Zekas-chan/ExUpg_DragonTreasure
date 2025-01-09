@@ -74,10 +74,10 @@ public class DragonTreasure {
         System.out.print("Name your hero: ");
         Player player = new Player(input.nextLine());//Assigns "player" the name that was input
 
-        //select level - mest för debugsyfte, ken ersättas med att hårdkoda level 1 vid inlämning
-        System.out.println("Select level (0 - test, 1 - the dragon dungeon): ");
-        int level = input.nextInt();
-        Room[][] map = loader.selectLevel(level);
+        //select level - mest för debugsyfte, kan ersättas med att hårdkoda level 1 vid inlämning
+        //System.out.println("Select level (0 - test, 1 - the dragon dungeon): ");
+        //int level = input.nextInt();
+        Room[][] map = loader.selectLevel(1);
 
 		//return playable dungeon
         return new Dungeon(map, welcomeMessage, player);

@@ -17,6 +17,10 @@ public class Creature {
         return health;
     }
 
+    public int getMaxHealth(){
+        return maxHealth;
+    }
+
     //heals entity with the incoming health and adds to current health
     public void Heal (int health)
     {

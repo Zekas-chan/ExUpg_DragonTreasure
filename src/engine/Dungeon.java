@@ -76,18 +76,12 @@ public class Dungeon {
             if(shouldNarrate) currentRoom.doNarrative();
 
             //key hints - om spelaren har items som kan användas
-            if(player.hasPotion())
+            if(player.hasPotion() && player.isHurt())
             {
-                System.out.println("To use a potion, press [h]");
+                System.out.printf("You have %d of %d health. To use a potion, press [h]%n", player.getHealth(), player.getMaxHealth());
             }
-            boolean needsKey = false;
-            for(Door door : currentRoom.getDoors()){
-                if(door.isLocked()){
-                    needsKey = true;
-                    break;
-                }
-            }//Lägger till så programmet inte konstant skriver ut "to use the key..." när vi bara har nyckeln i inventory
-            if(player.hasKey()&& needsKey)
+
+            if(player.hasKey() && currentRoom.hasLockedDoors())
             {
                 System.out.println("To use the key, press [u]");
             }

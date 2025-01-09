@@ -97,6 +97,11 @@ public class Player extends Creature {
         }
     }
 
+    public boolean isHurt()
+    {
+        return (super.getHealth() < super.getMaxHealth());
+    }
+
     /**
      * Kontrollerar om spelaren har en potion.
      * @return true/false om objektet finns

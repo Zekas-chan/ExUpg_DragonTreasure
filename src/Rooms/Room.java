@@ -136,6 +136,19 @@ public class Room {
     }
 
     /**
+     * Om rummet har en låst dörr. Används för att kontrollera om nyckelns key hint ska visas.
+     * @return True om en är låst, annars false
+     */
+    public boolean hasLockedDoors()
+    {
+        for (Door door : doors)
+        {
+            if (door.isLocked()) return true;
+        }
+        return false;
+    }
+
+    /**
      * Hanterar strider.
      *         //While monster ==isAlive
      *         /*Player.Player health, Player.Monster health, Player.Player dmg, Player.Monster dmg,

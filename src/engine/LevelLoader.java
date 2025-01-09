@@ -7,7 +7,7 @@ import Rooms.*;
 /**
  * Håller spelets alla rum samt en metod för att välja bland dem.
  */
-public class levelLoader{
+public class LevelLoader {
 
 	public Room[][] selectLevel (int level)
 	{

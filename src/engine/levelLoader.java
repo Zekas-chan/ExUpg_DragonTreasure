@@ -119,7 +119,7 @@ public class levelLoader{
 		Door[] door_treasure = {new Door('w', false)};
 		Item lootTreasure = new Treasure("chest of wonders", "filled with delights", 4);
 		Monster dragon = new Monster("dragon", "A", "the dragon", printDragon(), 18,1);
-		Room treasure = new Room("Wow, TREASURE!", door_treasure, dragon, lootTreasure); //Syns bättre, item och monster skapas och läggs in i rummet.
+		Room treasure = new Room("WOW, you see TREASURE!", door_treasure, dragon, lootTreasure); //Syns bättre, item och monster skapas och läggs in i rummet.
 
 		Door[] door_exit = {new Door('w', false)};
 		ExitRoom exit = new ExitRoom("Congratulations, you made it!", door_exit);
